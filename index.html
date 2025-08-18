@@ -63,11 +63,15 @@
                     <div class="terminal-header">cat /etc/motd</div>
                     <div class="terminal-content">
                         <div class="status-line">
-                            Welcome to Terminal News<br>
-                            A minimalist approach to web publishing<br><br>
-                            <strong style="color: var(--text-primary);">Focus:</strong> Web development, design patterns<br>
-                            <strong style="color: var(--text-primary);">Style:</strong> Terminal aesthetic, performance-first<br>
-                            <strong style="color: var(--text-primary);">Philosophy:</strong> Less is more
+                            <div style="text-align: center; margin-bottom: 15px;">
+                                <pre style="color: var(--accent); font-size: 0.8em; margin: 0;">┌─────────────────┐
+│ TERMINAL  NEWS  │
+└─────────────────┘</pre>
+                            </div>
+                            A minimalist approach to web development<br><br>
+                            <strong style="color: var(--text-primary);">Focus:</strong> Clean code, fast sites<br>
+                            <strong style="color: var(--text-primary);">Style:</strong> Terminal aesthetic<br>
+                            <strong style="color: var(--text-primary);">Stack:</strong> Vanilla HTML/CSS/JS
                         </div>
                     </div>
                 </div>
@@ -85,11 +89,32 @@
                     <div class="terminal-header">cat README.md</div>
                     <div class="terminal-content">
                         <div class="status-line" style="font-size: 0.85em;">
+                            <div style="text-align: center; margin-bottom: 10px;">
+                                <span style="color: var(--accent);">••••••••••••••••••••••••••••••</span>
+                            </div>
                             This site explores web development through a terminal lens. 
                             Each post focuses on practical techniques for building 
                             fast, accessible, and maintainable websites.<br><br>
-                            Built with vanilla HTML, CSS, and JavaScript.
-                            No frameworks, no build steps, no nonsense.
+                            <div style="text-align: center; margin-top: 15px;">
+                                <span style="color: var(--accent);">→ No frameworks</span><br>
+                                <span style="color: var(--accent);">→ No build steps</span><br>
+                                <span style="color: var(--accent);">→ No nonsense</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="terminal-window">
+                    <div class="terminal-header">uptime</div>
+                    <div class="terminal-content">
+                        <div class="status-line">
+                            <div style="text-align: center; margin-bottom: 10px;">
+                                <pre style="color: var(--accent); font-size: 0.7em; margin: 0;">[████████████████████] 100%</pre>
+                            </div>
+                            <strong style="color: var(--text-primary);">Status:</strong> Online<br>
+                            <strong style="color: var(--text-primary);">Built with:</strong> Commit Mono font<br>
+                            <strong style="color: var(--text-primary);">Theme:</strong> <span id="currentTheme">Matrix Green</span><br>
+                            <strong style="color: var(--text-primary);">Load time:</strong> ~instant
                         </div>
                     </div>
                 </div>

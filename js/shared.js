@@ -92,6 +92,30 @@ function loadTopicsList() {
 
 // ===== THEME PERSISTENCE =====
 
+const themeNames = {
+    'matrix': 'Matrix Green',
+    'amber': 'Amber Terminal',
+    'cyan': 'Cyan Blue',
+    'purple': 'Purple Haze',
+    'retro': 'Retro Orange',
+    'paper': 'Paper White',
+    'hacker': 'Hacker Green',
+    'ocean': 'Ocean Blue',
+    'fire': 'Fire Red'
+};
+
+function updateThemeDisplay() {
+    const themeDisplay = document.getElementById('currentTheme');
+    if (!themeDisplay) return;
+    
+    const pageType = getPageType();
+    const currentScheme = localStorage.getItem(`terminal-color-scheme-${pageType}`) || 
+                         localStorage.getItem('terminal-color-scheme') || 
+                         'matrix';
+    
+    themeDisplay.textContent = themeNames[currentScheme] || 'Matrix Green';
+}
+
 function getPageType() {
     const path = window.location.pathname;
     if (path.includes('blog.html')) return 'blog';
@@ -128,6 +152,9 @@ function setScheme(scheme) {
     if (switcher) {
         switcher.classList.add('hidden');
     }
+    
+    // Update theme display
+    updateThemeDisplay();
 }
 
 function toggleSwitcher() {
@@ -294,6 +321,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load latest posts and topics on main page
     loadLatestPosts();
     loadTopicsList();
+    updateThemeDisplay();
     
     // Only show help on main page
     if (window.location.pathname.endsWith('index.html') || 
