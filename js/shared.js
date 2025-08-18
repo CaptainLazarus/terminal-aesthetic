@@ -11,7 +11,7 @@ const blogPosts = [
         readTime: "8 min",
         link: "posts/post1.html",
         description: "In an era of increasingly complex web frameworks and bloated JavaScript bundles, there's something refreshing about returning to the fundamentals. Terminal-style websites offer a unique blend of nostalgia, functionality, and aesthetic appeal."
-    },
+    }
     // {
     //     filename: "css_grid_mastery.md",
     //     title: "CSS Grid Layout Mastery",
