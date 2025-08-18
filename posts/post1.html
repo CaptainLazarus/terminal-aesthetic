@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Terminal-Style Websites</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+    <button class="layout-toggle" onclick="toggleLayoutSwitcher()" accesskey="l" title="Toggle layouts (Alt+L)">layouts</button>
+    
+    <div class="layout-switcher hidden" id="layoutSwitcher">
+        <h3>Post Layouts</h3>
+        <button onclick="showLayout('magazine')" class="active">Magazine Style</button>
+        <button onclick="showLayout('timeline')">Timeline View</button>
+        <button onclick="showLayout('terminal')">Terminal Session</button>
+        <button onclick="showLayout('minimal')">Minimal Clean</button>
+        <button onclick="showLayout('wide')">Wide Format</button>
+    </div>
+
+    <!-- Layout 1: Magazine Style (Default) -->
+    <div class="layout layout-magazine active" id="layout-magazine">
+        <div class="container">
+            <header class="header terminal-window">
+                <h1>~/blog/post</h1>
+                <div class="breadcrumb">user@blog:~/posts$ cat building_terminal_websites.md</div>
+                <nav>
+                    <a href="../index.html" class="nav-btn">← Back to Main</a>
+                </nav>
+            </header>
+
+            <div class="blog-layout">
+                <main class="post-container terminal-window">
+                    <article class="post-content">
+                        <h1 class="post-title">Building Terminal-Style Websites: A Modern Approach</h1>
+                        
+                        <div class="post-meta">
+                            <span>Published: August 18, 2025</span>
+                            <span>Author: terminal_user</span>
+                            <span>Reading time: 8 minutes</span>
+                            <span>Size: 4.2KB</span>
+                        </div>
+
+                        <p>In an era of increasingly complex web frameworks and bloated JavaScript bundles, there's something refreshing about returning to the fundamentals. Terminal-style websites offer a unique blend of nostalgia, functionality, and aesthetic appeal that cuts through the noise of modern web design.</p>
+
+                        <h2>The Philosophy Behind Terminal Design</h2>
+
+                        <p>Terminal interfaces weren't designed to be pretty—they were designed to be functional. Every character, every color, every layout decision serves a purpose. This philosophy of intentional design is exactly what modern web development often lacks.</p>
+
+                        <p>When we strip away the unnecessary animations, the gradient backgrounds, and the endless carousel components, we're left with something pure: content and functionality working in harmony.</p>
+
+                        <h3>Why Monospace Fonts Matter</h3>
+
+                        <p>Monospace fonts like Courier New aren't just nostalgic—they're practical. Each character takes up the same amount of space, creating a natural grid that makes text scannable and layouts predictable. This consistency is something that variable-width fonts simply can't provide.</p>
+
+                        <ul>
+                            <li>Perfect alignment for tables and lists</li>
+                            <li>Consistent spacing makes reading more rhythmic</li>
+                            <li>Natural grid system without CSS Grid</li>
+                            <li>Clear distinction between different types of content</li>
+                        </ul>
+
+                        <h2>Technical Implementation</h2>
+
+                        <p>Building a terminal-style website doesn't require complex frameworks or build tools. In fact, the opposite is true—the simpler your stack, the more authentic the result.</p>
+
+                        <h3>CSS Custom Properties</h3>
+
+                        <p>Modern CSS gives us powerful tools for creating themeable interfaces. Using CSS custom properties (variables), we can create multiple color schemes that users can switch between dynamically:</p>
+
+                        <pre><code>:root {
+  --bg-primary: #1a0d1a;
+  --bg-secondary: #2d1a2d;
+  --text-primary: #bb88ff;
+  --accent: #bb88ff;
+}</code></pre>
+
+                        <p>This approach allows for easy theming while maintaining consistency across all components.</p>
+
+                        <h3>Semantic HTML Structure</h3>
+
+                        <p>Terminal interfaces are naturally hierarchical, and so should be our HTML. Using proper semantic elements like <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;nav&gt;</code> creates a document structure that both screen readers and search engines can understand.</p>
+
+                        <blockquote>
+                            "The best interface is the one that gets out of your way and lets you focus on what matters: the content."
+                        </blockquote>
+
+                        <h2>Design Principles</h2>
+
+                        <p>Creating an effective terminal-style design requires following certain principles that have made command-line interfaces successful for decades.</p>
+
+                        <h3>Information Hierarchy</h3>
+
+                        <p>In terminals, the most important information is always the most prominent. Commands are bright, output is dimmer, and metadata is dimmer still. This natural hierarchy guides the user's attention exactly where it needs to go.</p>
+
+                        <h3>Consistent Color Usage</h3>
+
+                        <p>Traditional terminals use color sparingly but meaningfully. Errors are red, success is green, warnings are yellow. Each color has a semantic meaning that users understand intuitively.</p>
+
+                        <h3>Respect for White Space</h3>
+
+                        <p>Terminals naturally create white space through their grid-based layout. This isn't wasted space—it's breathing room that makes dense information digestible.</p>
+
+                        <h2>Accessibility Considerations</h2>
+
+                        <p>Terminal interfaces are inherently accessible. They're keyboard-navigable, use high contrast colors, and present information in a logical, linear fashion. When building terminal-style websites, we can leverage these accessibility benefits.</p>
+
+                        <ul>
+                            <li>High contrast color schemes improve readability</li>
+                            <li>Keyboard shortcuts feel natural in a terminal context</li>
+                            <li>Monospace fonts are easier to read for many people</li>
+                            <li>Simple layouts work well with screen readers</li>
+                        </ul>
+
+                        <h2>Performance Benefits</h2>
+
+                        <p>Terminal-style websites are naturally performant. Without heavy images, complex animations, or JavaScript frameworks, they load quickly and run smoothly on any device.</p>
+
+                        <p>This isn't just about nostalgia—it's about creating websites that work for everyone, regardless of their internet connection or device capabilities.</p>
+
+                        <h2>The Future of Terminal Design</h2>
+
+                        <p>As web development continues to evolve, the principles behind terminal design remain relevant. Clarity, functionality, and user focus never go out of style.</p>
+
+                        <p>Terminal-style websites represent more than just an aesthetic choice—they're a statement about what we value in digital interfaces. In a world of infinite scroll and endless distractions, sometimes the most radical choice is simplicity.</p>
+
+                        <div class="tags">
+                            <span class="tag">web-design</span>
+                            <span class="tag">terminal</span>
+                            <span class="tag">css</span>
+                            <span class="tag">accessibility</span>
+                            <span class="tag">performance</span>
+                            <span class="tag">minimalism</span>
+                        </div>
+                    </article>
+                </main>
+
+                <aside class="sidebar terminal-window">
+                    <div style="margin-bottom: 25px;">
+                        <h3>Table of Contents</h3>
+                        <ul>
+                            <li><a href="#philosophy">Philosophy</a></li>
+                            <li><a href="#implementation">Implementation</a></li>
+                            <li><a href="#design">Design Principles</a></li>
+                            <li><a href="#accessibility">Accessibility</a></li>
+                            <li><a href="#performance">Performance</a></li>
+                            <li><a href="#future">Future</a></li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <h3>Related Posts</h3>
+                        <ul>
+                            <li><a href="post2.html">CSS Grid Mastery</a></li>
+                            <li><a href="post7.html">Monospace Typography</a></li>
+                            <li><a href="post6.html">Color Theory</a></li>
+                            <li><a href="post3.html">Static Site Generators</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3>Post Stats</h3>
+                        <div style="font-size: 0.85em; color: var(--text-muted); line-height: 1.6;">
+                            <strong style="color: var(--text-primary);">Word count:</strong> 847<br>
+                            <strong style="color: var(--text-primary);">Read time:</strong> 8 min<br>
+                            <strong style="color: var(--text-primary);">Published:</strong> Aug 18<br>
+                            <strong style="color: var(--text-primary);">Modified:</strong> Aug 18<br>
+                            <strong style="color: var(--text-primary);">Views:</strong> 234
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional layouts would be here, simplified for this example -->
+    <div class="layout layout-minimal" id="layout-minimal">
+        <div class="container">
+            <header class="header terminal-window">
+                <h1>~/blog/minimal</h1>
+                <div class="breadcrumb">user@blog:~/posts$ head -n 50 article.md</div>
+                <nav>
+                    <a href="../index.html" class="nav-btn">← Back to Main</a>
+                </nav>
+            </header>
+
+            <div class="blog-layout">
+                <article class="post-container terminal-window">
+                    <div class="post-content">
+                        <h1 class="post-title">Building Terminal-Style Websites</h1>
+                        
+                        <div class="post-meta">
+                            <span>Published: August 18, 2025</span>
+                            <span>Author: terminal_user</span>
+                            <span>Reading time: 8 minutes</span>
+                        </div>
+
+                        <p>In an era of increasingly complex web frameworks and bloated JavaScript bundles, there's something refreshing about returning to the fundamentals. Terminal-style websites offer a unique blend of nostalgia, functionality, and aesthetic appeal.</p>
+
+                        <h2>The Philosophy Behind Terminal Design</h2>
+
+                        <p>Terminal interfaces weren't designed to be pretty—they were designed to be functional. Every character, every color, every layout decision serves a purpose.</p>
+
+                        <blockquote>
+                            "The best interface is the one that gets out of your way and lets you focus on what matters: the content."
+                        </blockquote>
+
+                        <div class="tags">
+                            <span class="tag">web-design</span>
+                            <span class="tag">terminal</span>
+                            <span class="tag">minimalism</span>
+                            <span class="tag">css</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/shared.js"></script>
+    <script>
+        function showLayout(layoutName) {
+            // Hide all layouts
+            document.querySelectorAll('.layout').forEach(layout => {
+                layout.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.layout-switcher button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected layout
+            document.getElementById('layout-' + layoutName).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Hide switcher after selection
+            document.getElementById('layoutSwitcher').classList.add('hidden');
+        }
+
+        function toggleLayoutSwitcher() {
+            const switcher = document.getElementById('layoutSwitcher');
+            switcher.classList.toggle('hidden');
+        }
+
+        // Close switcher when clicking outside
+        document.addEventListener('click', function(event) {
+            const switcher = document.getElementById('layoutSwitcher');
+            const toggle = document.querySelector('.layout-toggle');
+            
+            if (!switcher.contains(event.target) && !toggle.contains(event.target)) {
+                switcher.classList.add('hidden');
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            if (event.altKey && event.key === 'l') {
+                event.preventDefault();
+                toggleLayoutSwitcher();
+            }
+            
+            // Escape key closes menus
+            if (event.key === 'Escape') {
+                document.getElementById('layoutSwitcher').classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Selector</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="prompt">user@blog:~/posts$</span>
+            <span style="color: var(--text-secondary);">fzf</span>
+            <input 
+                type="text" 
+                class="search-input" 
+                placeholder="Type to search posts..."
+                id="searchInput"
+                autocomplete="off"
+                spellcheck="false"
+            >
+            <div class="stats" id="statsDisplay">
+                <span id="resultCount">12</span>/<span id="totalCount">12</span>
+            </div>
+        </div>
+
+        <div class="results-container">
+            <div class="results-list" id="resultsList">
+                <!-- Results will be populated by JavaScript -->
+            </div>
+            
+            <div class="footer">
+                <div>
+                    <span class="keybind">↑↓</span> navigate
+                    <span class="keybind">Enter</span> open post
+                    <span class="keybind">Tab</span> preview
+                    <span class="keybind">Esc</span> back to main
+                </div>
+                <div>
+                    <span class="keybind">Ctrl+C</span> copy link
+                    <span class="keybind">Ctrl+O</span> open in new tab
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/shared.js"></script>
+    <script src="js/blog-selector.js"></script>
+</body>
+</html>

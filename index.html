@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal News</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <button class="scheme-toggle" onclick="toggleSwitcher()" tabindex="1" accesskey="t" title="Toggle themes (Alt+T)">themes</button>
+    
+    <div class="scheme-switcher hidden" id="schemeSwitcher">
+        <h3>Color Schemes</h3>
+        <button onclick="setScheme('matrix')" class="active" accesskey="1" title="Matrix Green (Alt+1)">Matrix Green</button>
+        <button onclick="setScheme('amber')" accesskey="2" title="Amber Terminal (Alt+2)">Amber Terminal</button>
+        <button onclick="setScheme('cyan')" accesskey="3" title="Cyan Blue (Alt+3)">Cyan Blue</button>
+        <button onclick="setScheme('purple')" accesskey="4" title="Purple Haze (Alt+4)">Purple Haze</button>
+        <button onclick="setScheme('retro')" accesskey="5" title="Retro Orange (Alt+5)">Retro Orange</button>
+        <button onclick="setScheme('paper')" accesskey="6" title="Paper White (Alt+6)">Paper White</button>
+        <button onclick="setScheme('hacker')" accesskey="7" title="Hacker Green (Alt+7)">Hacker Green</button>
+        <button onclick="setScheme('ocean')" accesskey="8" title="Ocean Blue (Alt+8)">Ocean Blue</button>
+        <button onclick="setScheme('fire')" accesskey="9" title="Fire Red (Alt+9)">Fire Red</button>
+    </div>
+
+    <div class="shortcuts-help" id="shortcutsHelp">
+        <h4>Keyboard Shortcuts</h4>
+        <ul>
+            <li><kbd>Alt+T</kbd> Toggle themes</li>
+            <li><kbd>Alt+1-9</kbd> Color schemes</li>
+            <li><kbd>Alt+H</kbd> Toggle this help</li>
+            <li><kbd>Alt+B</kbd> Go to blog</li>
+            <li><kbd>Esc</kbd> Close menus</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <header class="masthead">
+            <h1>./terminal_news<span class="cursor"></span></h1>
+            <p class="tagline">root@darkweb:~# cat latest_updates.log</p>
+            <div class="date-info">
+                [2025-08-18 15:42:17] Session initialized | PID: 1337
+            </div>
+        </header>
+
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="#home" accesskey="h">~/home</a></li>
+                <li><a href="#tech" accesskey="d">/dev/tech</a></li>
+                <li><a href="#security" accesskey="s">/sec</a></li>
+                <li><a href="blog.html" accesskey="b">/blog</a></li>
+                <li><a href="#about" accesskey="a">/info</a></li>
+                <li><a href="#exit" accesskey="x">logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content" id="mainContent" tabindex="-1">
+            <section class="articles">
+                <div class="terminal-window">
+                    <div class="terminal-header">executing: breaking_news.sh</div>
+                    <div class="terminal-content">
+                        <article class="article">
+                            <h3><a href="posts/post1.html">Zero-Day Exploit Discovered</a></h3>
+                            <div class="byline">security_team@localhost | 2025-08-18 14:30</div>
+                            <p>
+                                Critical vulnerability found in widely-used encryption library. Patch available immediately. All systems administrators should update their repositories and rebuild affected applications.
+                            </p>
+                            <p>
+                                The exploit allows remote code execution with elevated privileges. Over 50,000 servers potentially affected worldwide...
+                            </p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="terminal-window">
+                    <div class="terminal-header">running: ai_news.py --latest</div>
+                    <div class="terminal-content">
+                        <article class="article">
+                            <h3><a href="posts/post2.html">AI Model Achieves Human Parity</a></h3>
+                            <div class="byline">research_lab@university.edu | 2025-08-18 12:15</div>
+                            <p>
+                                New neural network architecture demonstrates human-level performance on complex reasoning tasks. The model, trained on a distributed computing cluster, shows remarkable improvements in logical inference.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="terminal-window">
+                    <div class="terminal-header">cat /var/log/blockchain.log</div>
+                    <div class="terminal-content">
+                        <article class="article">
+                            <h3><a href="posts/post3.html">Decentralized Internet Protocol</a></h3>
+                            <div class="byline">blockchain_dev@web3.org | 2025-08-17 18:45</div>
+                            <p>
+                                Revolutionary peer-to-peer protocol promises to eliminate centralized internet infrastructure. Beta testing begins next month with select developer communities.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="terminal-window">
+                    <div class="terminal-header">grep "quantum" /news/science/*</div>
+                    <div class="terminal-content">
+                        <article class="article">
+                            <h3><a href="posts/post4.html">Quantum Computing Milestone</a></h3>
+                            <div class="byline">quantum_lab@research.gov | 2025-08-16 09:22</div>
+                            <p>
+                                First practical quantum computer deployed for cryptographic research. The 1000-qubit system successfully broke several encryption algorithms in under 10 minutes.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="sidebar">
+                <div class="terminal-window">
+                    <div class="terminal-header">uptime && who</div>
+                    <div class="terminal-content">
+                        <div class="status-line">
+                            <strong>uptime:</strong> 247 days, 14:23<br>
+                            <strong>load avg:</strong> 0.42, 0.38, 0.35<br>
+                            <strong>users:</strong> 1337 logged in<br>
+                            <strong>memory:</strong> 12.8G / 16.0G used<br>
+                            <strong>swap:</strong> 0B / 4.0G used
+                        </div>
+                    </div>
+                </div>
+
+                <div class="terminal-window">
+                    <div class="terminal-header">ls -la /channels/</div>
+                    <div class="terminal-content">
+                        <ul class="info-list">
+                            <li><a href="#">#hackernews</a></li>
+                            <li><a href="#">#security-alerts</a></li>
+                            <li><a href="#">#dev-discussion</a></li>
+                            <li><a href="#">#crypto-updates</a></li>
+                            <li><a href="#">#open-source</a></li>
+                            <li><a href="blog.html">#blog-posts</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="terminal-window">
+                    <div class="terminal-header">tail -f /var/log/system.log</div>
+                    <div class="terminal-content">
+                        <div class="status-line" style="font-size: 0.8em;">
+                            [15:42] New user connection: 192.168.1.42<br>
+                            [15:41] Backup completed successfully<br>
+                            [15:40] Security scan: All clear<br>
+                            [15:39] Database sync complete<br>
+                            [15:38] Cache cleared, performance optimal<br>
+                            <strong style="color: var(--accent);">[15:37] Blog system online</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="terminal-window">
+                    <div class="terminal-header">finger admin@localhost</div>
+                    <div class="terminal-content">
+                        <div class="status-line">
+                            <strong>Admin:</strong> Terminal News Team<br>
+                            <strong>Email:</strong> admin@terminal.news<br>
+                            <strong>Last login:</strong> Aug 18 15:42<br>
+                            <strong>Shell:</strong> /bin/bash<br>
+                            <strong>Status:</strong> Available
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <footer class="footer">
+            <p>connection terminated. | <a href="#reconnect">reconnect</a> | <a href="#manual">man terminal_news</a> | <a href="blog.html">browse archives</a> | logout complete.</p>
+        </footer>
+    </div>
+
+    <script src="js/shared.js"></script>
+</body>
+</html>
