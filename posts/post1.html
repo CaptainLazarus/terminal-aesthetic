@@ -53,17 +53,41 @@
                             <span>Size: 4.2KB</span>
                         </div>
 
-                        <p>In an era of increasingly complex web frameworks and bloated JavaScript bundles, there's something refreshing about returning to the fundamentals. Terminal-style websites offer a unique blend of nostalgia, functionality, and aesthetic appeal that cuts through the noise of modern web design.</p>
+                        <p>In an era of increasingly complex web frameworks and bloated JavaScript bundles, there's something refreshing about returning to the fundamentals. Terminal-style websites offer a unique blend of nostalgia, functionality, and aesthetic appeal<a href="#sidenote1" class="note-ref">[1]</a> that cuts through the noise of modern web design.</p>
+
+                        <!-- Sidenote - appears in margin -->
+                        <div class="sidenote" id="sidenote1">
+                            <span class="note-number">[1]</span>
+                            <div class="note-content">
+                                The terminal aesthetic represents a philosophy of purposeful design where every element serves a function, every color has meaning, and complexity is stripped away in favor of clarity.
+                            </div>
+                        </div>
 
                         <h2 id="philosophy">The Philosophy Behind Terminal Design</h2>
 
-                        <p>Terminal interfaces weren't designed to be pretty—they were designed to be functional. Every character, every color, every layout decision serves a purpose. This philosophy of intentional design is exactly what modern web development often lacks.</p>
+                        <p>Terminal interfaces weren't designed to be pretty—they were designed to be functional<a href="#popup1" class="note-ref">[2]</a>. Every character, every color, every layout decision serves a purpose. This philosophy of intentional design is exactly what modern web development often lacks.</p>
+
+                        <!-- Popup note -->
+                        <div class="note-popup" id="popup1">
+                            <div class="popup-header">Terminal Design History</div>
+                            <div class="popup-content">
+                                The first computer terminals were typewriters connected to mainframes. The VT100 (1978) established the 80x24 grid and escape sequences we still use today.
+                            </div>
+                        </div>
 
                         <p>When we strip away the unnecessary animations, the gradient backgrounds, and the endless carousel components, we're left with something pure: content and functionality working in harmony.</p>
 
                         <h3>Why Monospace Fonts Matter</h3>
 
-                        <p>Monospace fonts like Courier New aren't just nostalgic—they're practical. Each character takes up the same amount of space, creating a natural grid that makes text scannable and layouts predictable. This consistency is something that variable-width fonts simply can't provide.</p>
+                        <p>Monospace fonts like Courier New aren't just nostalgic—they're practical<a href="#sidenote2" class="note-ref">[3]</a>. Each character takes up the same amount of space, creating a natural grid that makes text scannable and layouts predictable. This consistency is something that variable-width fonts simply can't provide.</p>
+
+                        <!-- Another sidenote -->
+                        <div class="sidenote" id="sidenote2">
+                            <span class="note-number">[3]</span>
+                            <div class="note-content">
+                                Studies show monospace fonts improve reading comprehension for users with dyslexia by reducing visual stress and making text easier to track.
+                            </div>
+                        </div>
 
                         <ul>
                             <li>Perfect alignment for tables and lists</li>
@@ -74,28 +98,27 @@
 
                         <h2 id="implementation">Technical Implementation</h2>
 
-                        <p>Terminal interfaces weren't designed to be pretty—they were designed to be functional. Every character, every color, every layout decision serves a purpose. This philosophy of intentional design is exactly what modern web development often lacks.</p>
+                        <p>Building a terminal-style website doesn't require complex frameworks or build tools<a href="#popup2" class="note-ref">[4]</a>. In fact, the opposite is true—the simpler your stack, the more authentic the result.</p>
 
-                        <p>When we strip away the unnecessary animations, the gradient backgrounds, and the endless carousel components, we're left with something pure: content and functionality working in harmony.</p>
-
-                        <h3>Why Monospace Fonts Matter</h3>
-
-                        <p>Monospace fonts like Courier New aren't just nostalgic—they're practical. Each character takes up the same amount of space, creating a natural grid that makes text scannable and layouts predictable. This consistency is something that variable-width fonts simply can't provide.</p>
-
-                        <ul>
-                            <li>Perfect alignment for tables and lists</li>
-                            <li>Consistent spacing makes reading more rhythmic</li>
-                            <li>Natural grid system without CSS Grid</li>
-                            <li>Clear distinction between different types of content</li>
-                        </ul>
-
-                        <h2>Technical Implementation</h2>
-
-                        <p>Building a terminal-style website doesn't require complex frameworks or build tools. In fact, the opposite is true—the simpler your stack, the more authentic the result.</p>
+                        <!-- Popup note about simple stacks -->
+                        <div class="note-popup" id="popup2">
+                            <div class="popup-header">Simple Technology Benefits</div>
+                            <div class="popup-content">
+                                Vanilla HTML/CSS/JS offers instant feedback, easy debugging, smaller bundles, and works anywhere without build tools or framework dependencies.
+                            </div>
+                        </div>
 
                         <h3>CSS Custom Properties</h3>
 
-                        <p>Modern CSS gives us powerful tools for creating themeable interfaces. Using CSS custom properties (variables), we can create multiple color schemes that users can switch between dynamically:</p>
+                        <p>Modern CSS gives us powerful tools for creating themeable interfaces. Using CSS custom properties (variables), we can create multiple color schemes that users can switch between dynamically<a href="#sidenote3" class="note-ref">[5]</a>:</p>
+
+                        <!-- Sidenote about CSS variables -->
+                        <div class="sidenote" id="sidenote3">
+                            <span class="note-number">[5]</span>
+                            <div class="note-content">
+                                CSS custom properties have 96%+ browser support and offer advantages over preprocessor variables: they're reactive, can be changed with JavaScript, and cascade naturally.
+                            </div>
+                        </div>
 
                         <pre><code>:root {
   --bg-primary: #1a0d1a;
@@ -116,7 +139,15 @@
 
                         <h2 id="design">Design Principles</h2>
 
-                        <p>Creating an effective terminal-style design requires following certain principles that have made command-line interfaces successful for decades.</p>
+                        <p>Creating an effective terminal-style design requires following certain principles that have made command-line interfaces successful for decades<a href="#popup3" class="note-ref">[6]</a>.</p>
+
+                        <!-- Popup about design principles -->
+                        <div class="note-popup" id="popup3">
+                            <div class="popup-header">50+ Years of Terminal Evolution</div>
+                            <div class="popup-content">
+                                Terminal design principles evolved from the 1970s through today, refined by decades of professional use. They survived because they minimize cognitive load while maximizing information density.
+                            </div>
+                        </div>
 
                         <h3>Information Hierarchy</h3>
 
@@ -131,22 +162,6 @@
                         <p>Terminals naturally create white space through their grid-based layout. This isn't wasted space—it's breathing room that makes dense information digestible.</p>
 
                         <h2 id="accessibility">Accessibility Considerations</h2>
-
-                        <p>Creating an effective terminal-style design requires following certain principles that have made command-line interfaces successful for decades.</p>
-
-                        <h3>Information Hierarchy</h3>
-
-                        <p>In terminals, the most important information is always the most prominent. Commands are bright, output is dimmer, and metadata is dimmer still. This natural hierarchy guides the user's attention exactly where it needs to go.</p>
-
-                        <h3>Consistent Color Usage</h3>
-
-                        <p>Traditional terminals use color sparingly but meaningfully. Errors are red, success is green, warnings are yellow. Each color has a semantic meaning that users understand intuitively.</p>
-
-                        <h3>Respect for White Space</h3>
-
-                        <p>Terminals naturally create white space through their grid-based layout. This isn't wasted space—it's breathing room that makes dense information digestible.</p>
-
-                        <h2>Accessibility Considerations</h2>
 
                         <p>Terminal interfaces are inherently accessible. They're keyboard-navigable, use high contrast colors, and present information in a logical, linear fashion. When building terminal-style websites, we can leverage these accessibility benefits.</p>
 
@@ -168,6 +183,41 @@
                         <p>As web development continues to evolve, the principles behind terminal design remain relevant. Clarity, functionality, and user focus never go out of style.</p>
 
                         <p>Terminal-style websites represent more than just an aesthetic choice—they're a statement about what we value in digital interfaces. In a world of infinite scroll and endless distractions, sometimes the most radical choice is simplicity.</p>
+
+                        <!-- Footer notes section -->
+                        <div class="footer-notes">
+                            <h3>Notes and References</h3>
+                            
+                            <div class="footnote">
+                                <span class="footnote-number">[1]</span>
+                                The aesthetic appeal of terminal interfaces stems from their clarity and purposefulness, not visual decoration. This creates a distinctive look that stands out in today's visually cluttered web.
+                            </div>
+                            
+                            <div class="footnote">
+                                <span class="footnote-number">[2]</span>
+                                Early terminals were constrained by hardware limitations, which led to efficient design patterns that are still relevant today. The VT100 terminal, released in 1978, became the de facto standard.
+                            </div>
+                            
+                            <div class="footnote">
+                                <span class="footnote-number">[3]</span>
+                                Monospace fonts provide functional benefits including better accessibility for users with reading difficulties and natural grid alignment for complex layouts.
+                            </div>
+                            
+                            <div class="footnote">
+                                <span class="footnote-number">[4]</span>
+                                Simple technology stacks align with the terminal philosophy of doing one thing well. They also offer better performance, easier maintenance, and wider compatibility.
+                            </div>
+                            
+                            <div class="footnote">
+                                <span class="footnote-number">[5]</span>
+                                CSS custom properties offer advantages over preprocessor variables with better performance, reactivity, and the ability to be changed dynamically with JavaScript.
+                            </div>
+                            
+                            <div class="footnote">
+                                <span class="footnote-number">[6]</span>
+                                Terminal design principles have been battle-tested over 50+ years of use in professional computing environments, making them reliable patterns for efficiency and clarity.
+                            </div>
+                        </div>
 
                         <div class="tags">
                             <span class="tag">web-design</span>
@@ -207,7 +257,7 @@
         </div>
     </div>
 
-    <!-- Additional layouts -->
+    <!-- Layout 2: Timeline Style -->
     <div class="layout layout-timeline" id="layout-timeline">
         <div class="container">
             <header class="header terminal-window">
@@ -302,6 +352,7 @@
         </div>
     </div>
 
+    <!-- Layout 3: Terminal Session -->
     <div class="layout layout-terminal" id="layout-terminal">
         <div class="container">
             <header class="header terminal-window">
@@ -398,6 +449,7 @@
         </div>
     </div>
 
+    <!-- Layout 4: Wide Format -->
     <div class="layout layout-wide" id="layout-wide">
         <div class="container">
             <header class="header terminal-window">
@@ -438,6 +490,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Layout 5: Minimal Clean -->
     <div class="layout layout-minimal" id="layout-minimal">
         <div class="container">
             <header class="header terminal-window">

@@ -441,11 +441,21 @@ function showInitialHelp() {
 // ===== NAVIGATION HELPERS =====
 
 function goToMain() {
-    window.location.href = '/index.html';
+    // Check if we're in a subdirectory
+    if (window.location.pathname.includes('/posts/')) {
+        window.location.href = '../index.html';
+    } else {
+        window.location.href = 'index.html';
+    }
 }
 
 function goToBlog() {
-    window.location.href = '/blog.html';
+    // Check if we're in a subdirectory  
+    if (window.location.pathname.includes('/posts/')) {
+        window.location.href = '../blog.html';
+    } else {
+        window.location.href = 'blog.html';
+    }
 }
 
 function goBack() {
@@ -471,6 +481,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start real-time clock
     startClock();
     
+   // Initialize notes system
+    initializeNotesSystem();
+    
+
     // Only show help on main page
     if (window.location.pathname.endsWith('index.html') || 
         window.location.pathname === '/' || 
@@ -478,6 +492,191 @@ document.addEventListener('DOMContentLoaded', function() {
         showInitialHelp();
     }
 });
+
+// ===== NOTES SYSTEM FUNCTIONALITY (REPLACE EXISTING) =====
+
+// ===== NOTES SYSTEM FUNCTIONALITY (REPLACE EXISTING) =====
+
+function initializeNotesSystem() {
+    let activeNote = null;
+    let hideTimer = null;
+
+    // Handle note reference clicks
+    const noteRefs = document.querySelectorAll('.note-ref');
+    noteRefs.forEach(ref => {
+        
+        // Click handler
+        ref.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const noteId = this.getAttribute('href').substring(1);
+            const noteContent = document.getElementById(noteId);
+            
+            if (noteContent) {
+                // Hide any currently active note
+                if (activeNote && activeNote !== noteContent) {
+                    hideNote(activeNote);
+                }
+                
+                if (noteContent.classList.contains('visible')) {
+                    hideNote(noteContent);
+                } else {
+                    showNote(noteContent, this);
+                }
+            }
+        });
+
+        // Hover handlers for better UX
+        ref.addEventListener('mouseenter', function() {
+            // Clear any pending hide timer
+            if (hideTimer) {
+                clearTimeout(hideTimer);
+                hideTimer = null;
+            }
+        });
+
+        ref.addEventListener('mouseleave', function() {
+            // Set a timer to hide the note after a delay
+            if (activeNote) {
+                hideTimer = setTimeout(() => {
+                    if (activeNote && !isHoveringNote(activeNote)) {
+                        hideNote(activeNote);
+                    }
+                }, 1000); // 1 second delay
+            }
+        });
+    });
+
+    // Functions to show/hide notes
+    function showNote(noteElement, trigger) {
+        const triggerRect = trigger.getBoundingClientRect();
+        
+        if (noteElement.classList.contains('sidenote')) {
+            // Sidenotes are positioned with fixed CSS, just show them
+            // They'll appear in the right place due to CSS positioning
+        } else if (noteElement.classList.contains('note-popup')) {
+            // Position popup near the trigger but within viewport
+            let left = triggerRect.left;
+            let top = triggerRect.bottom + 10;
+            
+            // Adjust if popup would go off-screen horizontally
+            const viewportWidth = window.innerWidth;
+            const popupWidth = 350;
+            
+            if (left + popupWidth > viewportWidth - 20) {
+                left = viewportWidth - popupWidth - 20;
+            }
+            if (left < 20) {
+                left = 20;
+            }
+            
+            // Adjust if popup would go off-screen vertically
+            const viewportHeight = window.innerHeight;
+            const estimatedPopupHeight = 200; // Rough estimate
+            
+            if (top + estimatedPopupHeight > viewportHeight - 20) {
+                top = triggerRect.top - estimatedPopupHeight - 10;
+                // Remove the arrow if popup is above
+                noteElement.style.setProperty('--arrow-display', 'none');
+            } else {
+                noteElement.style.removeProperty('--arrow-display');
+            }
+            
+            // Ensure minimum distance from edges
+            if (top < 20) {
+                top = 20;
+            }
+            
+            noteElement.style.left = left + 'px';
+            noteElement.style.top = top + 'px';
+        }
+        
+        noteElement.classList.add('visible');
+        activeNote = noteElement;
+        
+        // Add hover handlers to the note itself to prevent premature hiding
+        noteElement.addEventListener('mouseenter', function() {
+            if (hideTimer) {
+                clearTimeout(hideTimer);
+                hideTimer = null;
+            }
+        });
+        
+        noteElement.addEventListener('mouseleave', function() {
+            hideTimer = setTimeout(() => {
+                hideNote(noteElement);
+            }, 500); // Shorter delay when leaving note
+        });
+    }
+
+    function hideNote(noteElement) {
+        if (noteElement) {
+            noteElement.classList.remove('visible');
+            if (activeNote === noteElement) {
+                activeNote = null;
+            }
+        }
+        if (hideTimer) {
+            clearTimeout(hideTimer);
+            hideTimer = null;
+        }
+    }
+
+    function hideAllNotes() {
+        document.querySelectorAll('.note-popup.visible, .sidenote.visible').forEach(note => {
+            hideNote(note);
+        });
+    }
+
+    function isHoveringNote(noteElement) {
+        return noteElement.matches(':hover');
+    }
+
+    // Close notes when clicking elsewhere
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.note-ref') && 
+            !e.target.closest('.note-popup') && 
+            !e.target.closest('.sidenote')) {
+            hideAllNotes();
+        }
+    });
+
+    // Close notes on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            hideAllNotes();
+        }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        hideAllNotes();
+    });
+
+    // Handle scroll - hide notes when scrolling
+    let scrollTimer = null;
+    window.addEventListener('scroll', function() {
+        if (activeNote) {
+            // Clear existing timer
+            if (scrollTimer) {
+                clearTimeout(scrollTimer);
+            }
+            
+            // Hide notes after scrolling stops
+            scrollTimer = setTimeout(() => {
+                hideAllNotes();
+            }, 150);
+        }
+    });
+
+    // Debug function to test if notes system is working
+    window.testNotes = function() {
+        console.log('Notes found:', document.querySelectorAll('.note-ref').length);
+        console.log('Sidenotes found:', document.querySelectorAll('.sidenote').length);
+        console.log('Popups found:', document.querySelectorAll('.note-popup').length);
+    };
+}
 
 // Make functions available globally
 window.setScheme = setScheme;

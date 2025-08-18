@@ -781,3 +781,264 @@
         padding: 25px !important;
     }
 }
+
+/* ===== NOTES SYSTEM STYLES (REPLACE EXISTING NOTES CSS) ===== */
+/* ===== NOTES SYSTEM STYLES (REPLACE EXISTING) ===== */
+
+/* Note reference in text */
+
+.note-ref {
+    background: transparent;
+    color: var(--accent);
+    /* border: 1px solid var(--accent); */
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-size: 0.7em;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    margin: 0 1px;
+    transition: all 0.2s ease;
+    vertical-align: super;
+    display: inline-block;
+    line-height: 1;
+    min-width: 12px;
+    text-align: center;
+}
+
+.note-ref:hover {
+    background: var(--accent);
+    color: var(--bg-primary);
+    box-shadow: 0 0 5px var(--accent);
+    transform: scale(1.1);
+}
+/* Magazine layout adjustments for notes */
+.layout-magazine .blog-layout {
+    position: relative;
+    overflow: visible;
+}
+
+.layout-magazine .post-container {
+    position: relative;
+    overflow: visible;
+}
+
+.layout-magazine .post-content {
+    position: relative;
+    overflow: visible;
+}
+
+/* Sidenote - appears in margin, but positioned relative to viewport on magazine layout */
+.sidenote {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 280px;
+    max-width: 300px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--accent);
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 0.8em;
+    color: var(--text-secondary);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%) translateX(20px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    line-height: 1.5;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.sidenote.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+}
+
+.sidenote .note-number {
+    color: var(--accent);
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 0.9em;
+}
+
+.sidenote .note-content {
+    color: var(--text-secondary);
+}
+
+.sidenote .note-content a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.sidenote .note-content a:hover {
+    text-decoration: underline;
+}
+
+/* Popup note - appears below the reference, positioned relative to viewport */
+.note-popup {
+    position: fixed;
+    background: var(--bg-secondary);
+    border: 2px solid var(--accent);
+    border-radius: 5px;
+    padding: 15px;
+    width: 350px;
+    max-width: 90vw;
+    z-index: 1001;
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    line-height: 1.6;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.note-popup.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.note-popup::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--accent);
+}
+
+.note-popup .popup-header {
+    color: var(--accent);
+    font-weight: bold;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.note-popup .popup-content {
+    color: var(--text-secondary);
+}
+
+.note-popup .popup-content a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.note-popup .popup-content a:hover {
+    text-decoration: underline;
+}
+
+/* Footer notes section */
+.footer-notes {
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+.footer-notes h3 {
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.footer-notes h3::before {
+    content: "# ";
+    color: var(--accent);
+}
+
+.footnote {
+    margin-bottom: 18px;
+    padding: 12px 15px 12px 35px;
+    position: relative;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    line-height: 1.6;
+    background: var(--bg-secondary);
+    border-radius: 3px;
+    border-left: 3px solid var(--accent);
+}
+
+.footnote .footnote-number {
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    color: var(--accent);
+    font-weight: bold;
+    background: var(--bg-primary);
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 0.8em;
+    min-width: 18px;
+    text-align: center;
+}
+
+/* Responsive behavior */
+@media (max-width: 1200px) {
+    /* On smaller screens, make sidenotes appear as centered modals */
+    .sidenote {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        right: auto;
+        width: 350px;
+    }
+    
+    .sidenote.visible {
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .note-popup {
+        left: 10px !important;
+        right: 10px;
+        width: auto;
+        max-width: none;
+        top: 20% !important;
+        transform: none !important;
+    }
+    
+    .note-popup.visible {
+        transform: none;
+    }
+    
+    .sidenote {
+        left: 10px;
+        right: 10px;
+        width: auto;
+        max-width: none;
+        top: 20%;
+        transform: translateY(-20%);
+    }
+    
+    .sidenote.visible {
+        transform: translateY(-20%);
+    }
+    
+    .footnote {
+        padding: 10px 12px 10px 30px;
+        font-size: 0.85em;
+    }
+    
+    .footnote .footnote-number {
+        left: 5px;
+        top: 10px;
+    }
+}
