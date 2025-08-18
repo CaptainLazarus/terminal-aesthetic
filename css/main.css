@@ -284,6 +284,27 @@ body {
 
 /* ===== NAVIGATION & LINKS ===== */
 
+.nav-bar {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.nav-bar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-bar li {
+    margin: 0 8px;
+}
+
 .nav-btn, .nav-bar a {
     background: var(--bg-tertiary);
     color: var(--text-primary);
@@ -368,25 +389,6 @@ body {
 .date-info {
     color: var(--text-muted);
     font-size: 0.9em;
-}
-
-.nav-bar {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-}
-
-.nav-bar ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.nav-bar li {
-    margin: 0 15px;
 }
 
 .main-content {

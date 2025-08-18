@@ -1,11 +1,16 @@
 /* ===== BLOG SELECTOR STYLES ===== */
 
-body {
+/* Only apply height constraints on blog selector page */
+.blog-selector-page {
     height: 100vh;
     overflow: hidden;
 }
 
-.container {
+.blog-selector-page .container {
+    height: 100vh;
+}
+
+.blog-selector-page .container {
     height: 100vh;
     display: flex;
     flex-direction: column;
