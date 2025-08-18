@@ -34,14 +34,14 @@
     <!-- Layout 1: Magazine Style (Default) -->
     <div class="layout layout-magazine active" id="layout-magazine">
         <div class="container">
-            <header class="header terminal-window">
-                <h1>~/blog/post</h1>
-                <div class="breadcrumb">user@blog:~/posts$ cat building_terminal_websites.md</div>
-                <nav>
-                    <a href="../index.html" class="nav-btn">← Back to Main</a>
-                </nav>
-            </header>
-
+<!-- OPTION 3: Command Line Style -->
+<!-- OPTION 4: Super Minimal -->
+<div style="padding: 15px 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="color: var(--text-muted); font-size: 0.9em;">~/posts/building_terminal_websites.md</span>
+        <!-- <a href="../index.html" class="nav-btn icon-style">Back</a> -->
+    </div>
+</div>
             <div class="blog-layout">
                 <main class="post-container terminal-window">
                     <article class="post-content">
@@ -185,48 +185,60 @@
                         <p>Terminal-style websites represent more than just an aesthetic choice—they're a statement about what we value in digital interfaces. In a world of infinite scroll and endless distractions, sometimes the most radical choice is simplicity.</p>
 
                         <!-- Footer notes section -->
-                        <div class="footer-notes">
-                            <h3>Notes and References</h3>
-                            
-                            <div class="footnote">
-                                <span class="footnote-number">[1]</span>
-                                The aesthetic appeal of terminal interfaces stems from their clarity and purposefulness, not visual decoration. This creates a distinctive look that stands out in today's visually cluttered web.
-                            </div>
-                            
-                            <div class="footnote">
-                                <span class="footnote-number">[2]</span>
-                                Early terminals were constrained by hardware limitations, which led to efficient design patterns that are still relevant today. The VT100 terminal, released in 1978, became the de facto standard.
-                            </div>
-                            
-                            <div class="footnote">
-                                <span class="footnote-number">[3]</span>
-                                Monospace fonts provide functional benefits including better accessibility for users with reading difficulties and natural grid alignment for complex layouts.
-                            </div>
-                            
-                            <div class="footnote">
-                                <span class="footnote-number">[4]</span>
-                                Simple technology stacks align with the terminal philosophy of doing one thing well. They also offer better performance, easier maintenance, and wider compatibility.
-                            </div>
-                            
-                            <div class="footnote">
-                                <span class="footnote-number">[5]</span>
-                                CSS custom properties offer advantages over preprocessor variables with better performance, reactivity, and the ability to be changed dynamically with JavaScript.
-                            </div>
-                            
-                            <div class="footnote">
-                                <span class="footnote-number">[6]</span>
-                                Terminal design principles have been battle-tested over 50+ years of use in professional computing environments, making them reliable patterns for efficiency and clarity.
-                            </div>
-                        </div>
+<div class="footer-notes">
+    <h3>Notes and References</h3>
+    
+    <div class="footnote grid-style">
+        <div class="footnote-number">[1]</div>
+        <div class="footnote-content">
+            The aesthetic appeal of terminal interfaces stems from their clarity and purposefulness, not visual decoration. This creates a distinctive look that stands out in today's visually cluttered web.
+        </div>
+    </div>
+    
+    <div class="footnote grid-style">
+        <div class="footnote-number">[2]</div>
+        <div class="footnote-content">
+            Early terminals were constrained by hardware limitations, which led to efficient design patterns that are still relevant today. The VT100 terminal, released in 1978, became the de facto standard.
+        </div>
+    </div>
+    
+    <div class="footnote grid-style">
+        <div class="footnote-number">[3]</div>
+        <div class="footnote-content">
+            Monospace fonts provide functional benefits including better accessibility for users with reading difficulties and natural grid alignment for complex layouts.
+        </div>
+    </div>
+    
+    <div class="footnote grid-style">
+        <div class="footnote-number">[4]</div>
+        <div class="footnote-content">
+            Simple technology stacks align with the terminal philosophy of doing one thing well. They also offer better performance, easier maintenance, and wider compatibility.
+        </div>
+    </div>
+    
+    <div class="footnote grid-style">
+        <div class="footnote-number">[5]</div>
+        <div class="footnote-content">
+            CSS custom properties offer advantages over preprocessor variables with better performance, reactivity, and the ability to be changed dynamically with JavaScript.
+        </div>
+    </div>
+    
+    <div class="footnote grid-style">
+        <div class="footnote-number">[6]</div>
+        <div class="footnote-content">
+            Terminal design principles have been battle-tested over 50+ years of use in professional computing environments, making them reliable patterns for efficiency and clarity.
+        </div>
+    </div>
+</div>
 
-                        <div class="tags">
-                            <span class="tag">web-design</span>
-                            <span class="tag">terminal</span>
-                            <span class="tag">css</span>
-                            <span class="tag">accessibility</span>
-                            <span class="tag">performance</span>
-                            <span class="tag">minimalism</span>
-                        </div>
+                        <!-- <div class="tags"> -->
+                        <!--     <span class="tag">web-design</span> -->
+                        <!--     <span class="tag">terminal</span> -->
+                        <!--     <span class="tag">css</span> -->
+                        <!--     <span class="tag">accessibility</span> -->
+                        <!--     <span class="tag">performance</span> -->
+                        <!--     <span class="tag">minimalism</span> -->
+                        <!-- </div> -->
                     </article>
                 </main>
 

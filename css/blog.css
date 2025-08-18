@@ -963,30 +963,35 @@
     color: var(--accent);
 }
 
-.footnote {
+/* Alternative: Use CSS Grid for better control */
+.footnote.grid-style {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 15px;
+    align-items: start;
+    padding: 15px 20px;
     margin-bottom: 18px;
-    padding: 12px 15px 12px 35px;
-    position: relative;
+    background: var(--bg-secondary);
+    border-radius: 5px;
+    border-left: 4px solid var(--accent);
+}
+
+.footnote.grid-style .footnote-number {
+    position: static;
+    background: var(--bg-primary);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    text-align: center;
+    font-weight: bold;
+    color: var(--accent);
+    line-height: 1.2;
+}
+
+.footnote.grid-style .footnote-content {
     color: var(--text-secondary);
     font-size: 0.9em;
     line-height: 1.6;
-    background: var(--bg-secondary);
-    border-radius: 3px;
-    border-left: 3px solid var(--accent);
-}
-
-.footnote .footnote-number {
-    position: absolute;
-    left: 8px;
-    top: 12px;
-    color: var(--accent);
-    font-weight: bold;
-    background: var(--bg-primary);
-    padding: 2px 6px;
-    border-radius: 2px;
-    font-size: 0.8em;
-    min-width: 18px;
-    text-align: center;
 }
 
 /* Responsive behavior */
@@ -1041,4 +1046,127 @@
         left: 5px;
         top: 10px;
     }
+}
+
+/* ===== IMPROVED POST HEADER STYLES ===== */
+/* Add this to your blog.css */
+
+/* Smaller, more subtle header */
+.header.minimal {
+    padding: 15px 20px;
+    text-align: left;
+}
+
+.header.minimal h1 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    text-shadow: none;
+}
+
+.header.minimal .breadcrumb {
+    font-size: 0.8em;
+    margin-bottom: 10px;
+}
+
+/* Enhanced back button styles */
+.nav-btn {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--accent);
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'Commit Mono', 'Courier New', monospace;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.nav-btn:hover::before {
+    left: 100%;
+}
+
+.nav-btn:hover {
+    background: var(--accent);
+    color: var(--bg-primary);
+    box-shadow: 0 0 15px var(--accent);
+    border-color: var(--text-primary);
+    transform: translateX(-3px);
+}
+
+/* Alternative terminal-style back button */
+.nav-btn.terminal-style {
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nav-btn.terminal-style::after {
+    content: " █";
+    animation: blink 1s infinite;
+}
+
+.nav-btn.terminal-style:hover {
+    background: var(--bg-primary);
+    border-color: var(--accent);
+    box-shadow: 0 0 10px var(--accent), inset 0 0 10px var(--accent);
+}
+
+/* Breadcrumb-style back button */
+.nav-btn.breadcrumb-style {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 5px 0;
+    font-size: 0.85em;
+}
+
+.nav-btn.breadcrumb-style::before {
+    content: "$ cd ";
+    color: var(--accent);
+}
+
+.nav-btn.breadcrumb-style:hover {
+    color: var(--accent);
+    background: transparent;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Icon-style back button */
+.nav-btn.icon-style {
+    padding: 10px 15px;
+    border-radius: 50px;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--accent);
+}
+
+.nav-btn.icon-style::before {
+    content: "◀";
+    margin-right: 5px;
+    font-size: 1.1em;
+}
+
+.nav-btn.icon-style:hover {
+    background: var(--accent);
+    color: var(--bg-primary);
+    border-color: var(--text-primary);
+    transform: scale(1.05);
 }
