@@ -12,127 +12,127 @@ const blogPosts = [
         link: "posts/post1.html",
         description: "In an era of increasingly complex web frameworks and bloated JavaScript bundles, there's something refreshing about returning to the fundamentals. Terminal-style websites offer a unique blend of nostalgia, functionality, and aesthetic appeal."
     },
-    {
-        filename: "vanilla_js_dom_manipulation.md",
-        title: "Vanilla JavaScript DOM Manipulation",
-        date: "Aug 15",
-        year: "2025",
-        tags: ["javascript", "dom", "vanilla", "performance"],
-        words: 1203,
-        readTime: "11 min",
-        link: "posts/post2.html",
-        description: "Skip the framework overhead and master direct DOM manipulation. Learn efficient patterns for updating the UI, handling events, and managing state without external dependencies."
-    },
-    {
-        filename: "css_custom_properties_guide.md",
-        title: "CSS Custom Properties: Beyond Basic Theming",
-        date: "Aug 12",
-        year: "2025",
-        tags: ["css", "theming", "design-systems"],
-        words: 956,
-        readTime: "9 min",
-        link: "posts/post3.html",
-        description: "CSS custom properties aren't just for color schemes. Discover advanced techniques for responsive design, component variants, and dynamic styling without JavaScript."
-    },
-    {
-        filename: "keyboard_first_navigation.md",
-        title: "Keyboard-First Navigation Patterns",
-        date: "Aug 09",
-        year: "2025",
-        tags: ["accessibility", "keyboard", "ux", "terminal"],
-        words: 1087,
-        readTime: "10 min",
-        link: "posts/post4.html",
-        description: "Terminal users expect keyboard shortcuts. Learn how to implement intuitive navigation patterns that make your site accessible and efficient for power users."
-    },
-    {
-        filename: "static_site_performance.md",
-        title: "Static Site Performance Optimization",
-        date: "Aug 06",
-        year: "2025",
-        tags: ["performance", "optimization", "static-sites", "web-vitals"],
-        words: 1340,
-        readTime: "12 min",
-        link: "posts/post5.html",
-        description: "Achieve sub-second load times without build tools. Practical techniques for optimizing fonts, images, CSS, and JavaScript in static websites."
-    },
-    {
-        filename: "monospace_fonts_web.md",
-        title: "Monospace Fonts on the Modern Web",
-        date: "Aug 03",
-        year: "2025",
-        tags: ["typography", "fonts", "design", "accessibility"],
-        words: 789,
-        readTime: "7 min",
-        link: "posts/post6.html",
-        description: "Why monospace fonts aren't just for code. Explore how consistent character spacing improves readability, accessibility, and creates distinctive design patterns."
-    },
-    {
-        filename: "progressive_enhancement_2025.md",
-        title: "Progressive Enhancement in 2025",
-        date: "Jul 31",
-        year: "2025",
-        tags: ["progressive-enhancement", "accessibility", "performance"],
-        words: 1156,
-        readTime: "11 min",
-        link: "posts/post7.html",
-        description: "Build websites that work for everyone. Start with solid HTML and CSS, then layer on JavaScript enhancements that degrade gracefully across all devices and connections."
-    },
-    {
-        filename: "minimal_build_tools.md",
-        title: "Minimal Build Tools for Maximum Productivity",
-        date: "Jul 28",
-        year: "2025",
-        tags: ["build-tools", "productivity", "simplicity"],
-        words: 923,
-        readTime: "8 min",
-        link: "posts/post8.html",
-        description: "Sometimes the best build tool is no build tool. When to embrace simplicity and when you actually need automation in your development workflow."
-    },
-    {
-        filename: "semantic_html_terminal_ui.md",
-        title: "Semantic HTML for Terminal UIs",
-        date: "Jul 25",
-        year: "2025",
-        tags: ["html", "semantics", "accessibility", "terminal"],
-        words: 834,
-        readTime: "8 min",
-        link: "posts/post9.html",
-        description: "Terminal interfaces have natural information hierarchy. Learn how to translate command-line patterns into semantic HTML that works with screen readers and search engines."
-    },
-    {
-        filename: "git_workflows_solo_dev.md",
-        title: "Git Workflows for Solo Developers",
-        date: "Jul 22",
-        year: "2025",
-        tags: ["git", "workflow", "version-control", "productivity"],
-        words: 1098,
-        readTime: "10 min",
-        link: "posts/post10.html",
-        description: "Streamline your solo development process with practical Git strategies. Branching patterns, commit conventions, and automation that actually make sense for one-person projects."
-    },
-    {
-        filename: "color_accessibility_terminals.md",
-        title: "Color and Accessibility in Terminal Design",
-        date: "Jul 19",
-        year: "2025",
-        tags: ["accessibility", "color", "design", "terminal"],
-        words: 1267,
-        readTime: "12 min",
-        link: "posts/post11.html",
-        description: "High contrast isn't enough. Understand color theory, visual disabilities, and testing methods to create terminal interfaces that work for everyone."
-    },
-    {
-        filename: "web_components_vanilla.md",
-        title: "Web Components Without the Framework",
-        date: "Jul 16",
-        year: "2025",
-        tags: ["web-components", "vanilla", "javascript", "components"],
-        words: 1423,
-        readTime: "13 min",
-        link: "posts/post12.html",
-        description: "Custom elements and shadow DOM provide framework-like component capabilities with zero dependencies. Build reusable UI components that work anywhere."
-    }
+    // {
+    //     filename: "vanilla_js_dom_manipulation.md",
+    //     title: "Vanilla JavaScript DOM Manipulation",
+    //     date: "Aug 15",
+    //     year: "2025",
+    //     tags: ["javascript", "dom", "vanilla", "performance"],
+    //     words: 1203,
+    //     readTime: "11 min",
+    //     link: "posts/post2.html",
+    //     description: "Skip the framework overhead and master direct DOM manipulation. Learn efficient patterns for updating the UI, handling events, and managing state without external dependencies."
+    // },
+    // {
+    //     filename: "css_custom_properties_guide.md",
+    //     title: "CSS Custom Properties: Beyond Basic Theming",
+    //     date: "Aug 12",
+    //     year: "2025",
+    //     tags: ["css", "theming", "design-systems"],
+    //     words: 956,
+    //     readTime: "9 min",
+    //     link: "posts/post3.html",
+    //     description: "CSS custom properties aren't just for color schemes. Discover advanced techniques for responsive design, component variants, and dynamic styling without JavaScript."
+    // },
+    // {
+    //     filename: "keyboard_first_navigation.md",
+    //     title: "Keyboard-First Navigation Patterns",
+    //     date: "Aug 09",
+    //     year: "2025",
+    //     tags: ["accessibility", "keyboard", "ux", "terminal"],
+    //     words: 1087,
+    //     readTime: "10 min",
+    //     link: "posts/post4.html",
+    //     description: "Terminal users expect keyboard shortcuts. Learn how to implement intuitive navigation patterns that make your site accessible and efficient for power users."
+    // },
+    // {
+    //     filename: "static_site_performance.md",
+    //     title: "Static Site Performance Optimization",
+    //     date: "Aug 06",
+    //     year: "2025",
+    //     tags: ["performance", "optimization", "static-sites", "web-vitals"],
+    //     words: 1340,
+    //     readTime: "12 min",
+    //     link: "posts/post5.html",
+    //     description: "Achieve sub-second load times without build tools. Practical techniques for optimizing fonts, images, CSS, and JavaScript in static websites."
+    // },
+    // {
+    //     filename: "monospace_fonts_web.md",
+    //     title: "Monospace Fonts on the Modern Web",
+    //     date: "Aug 03",
+    //     year: "2025",
+    //     tags: ["typography", "fonts", "design", "accessibility"],
+    //     words: 789,
+    //     readTime: "7 min",
+    //     link: "posts/post6.html",
+    //     description: "Why monospace fonts aren't just for code. Explore how consistent character spacing improves readability, accessibility, and creates distinctive design patterns."
+    // },
+    // {
+    //     filename: "progressive_enhancement_2025.md",
+    //     title: "Progressive Enhancement in 2025",
+    //     date: "Jul 31",
+    //     year: "2025",
+    //     tags: ["progressive-enhancement", "accessibility", "performance"],
+    //     words: 1156,
+    //     readTime: "11 min",
+    //     link: "posts/post7.html",
+    //     description: "Build websites that work for everyone. Start with solid HTML and CSS, then layer on JavaScript enhancements that degrade gracefully across all devices and connections."
+    // },
+    // {
+    //     filename: "minimal_build_tools.md",
+    //     title: "Minimal Build Tools for Maximum Productivity",
+    //     date: "Jul 28",
+    //     year: "2025",
+    //     tags: ["build-tools", "productivity", "simplicity"],
+    //     words: 923,
+    //     readTime: "8 min",
+    //     link: "posts/post8.html",
+    //     description: "Sometimes the best build tool is no build tool. When to embrace simplicity and when you actually need automation in your development workflow."
+    // },
+    // {
+    //     filename: "semantic_html_terminal_ui.md",
+    //     title: "Semantic HTML for Terminal UIs",
+    //     date: "Jul 25",
+    //     year: "2025",
+    //     tags: ["html", "semantics", "accessibility", "terminal"],
+    //     words: 834,
+    //     readTime: "8 min",
+    //     link: "posts/post9.html",
+    //     description: "Terminal interfaces have natural information hierarchy. Learn how to translate command-line patterns into semantic HTML that works with screen readers and search engines."
+    // },
+    // {
+    //     filename: "git_workflows_solo_dev.md",
+    //     title: "Git Workflows for Solo Developers",
+    //     date: "Jul 22",
+    //     year: "2025",
+    //     tags: ["git", "workflow", "version-control", "productivity"],
+    //     words: 1098,
+    //     readTime: "10 min",
+    //     link: "posts/post10.html",
+    //     description: "Streamline your solo development process with practical Git strategies. Branching patterns, commit conventions, and automation that actually make sense for one-person projects."
+    // },
+    // {
+    //     filename: "color_accessibility_terminals.md",
+    //     title: "Color and Accessibility in Terminal Design",
+    //     date: "Jul 19",
+    //     year: "2025",
+    //     tags: ["accessibility", "color", "design", "terminal"],
+    //     words: 1267,
+    //     readTime: "12 min",
+    //     link: "posts/post11.html",
+    //     description: "High contrast isn't enough. Understand color theory, visual disabilities, and testing methods to create terminal interfaces that work for everyone."
+    // },
+    // {
+    //     filename: "web_components_vanilla.md",
+    //     title: "Web Components Without the Framework",
+    //     date: "Jul 16",
+    //     year: "2025",
+    //     tags: ["web-components", "vanilla", "javascript", "components"],
+    //     words: 1423,
+    //     readTime: "13 min",
+    //     link: "posts/post12.html",
+    //     description: "Custom elements and shadow DOM provide framework-like component capabilities with zero dependencies. Build reusable UI components that work anywhere."
+    // }
 ];
 
 // ===== REAL-TIME DATE/TIME =====
