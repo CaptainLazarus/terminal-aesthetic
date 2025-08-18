@@ -136,6 +136,12 @@ function selectPost(index) {
     if (index >= 0 && index < filteredPosts.length) {
         selectedIndex = index;
         renderResults();
+        
+        // If preview is visible and we moved to a different post, update preview
+        const previewPanel = document.getElementById('previewPanel');
+        if (previewPanel && previewPanel.style.display !== 'none' && currentPreviewIndex !== selectedIndex) {
+            showPreview();
+        }
     }
 }
 
@@ -190,6 +196,70 @@ function showFeedback(message) {
     }
 }
 
+// ===== PREVIEW FUNCTIONALITY =====
+
+let currentPreviewIndex = -1; // Track which post is currently previewed
+
+function togglePreview() {
+    const previewPanel = document.getElementById('previewPanel');
+    if (!previewPanel) return;
+    
+    // If preview is hidden, show it for current selection
+    if (previewPanel.style.display === 'none') {
+        showPreview();
+    } 
+    // If preview is shown but for a different post, update it
+    else if (currentPreviewIndex !== selectedIndex) {
+        showPreview();
+    }
+    // If preview is shown for the same post, hide it
+    else {
+        hidePreview();
+    }
+}
+
+function showPreview() {
+    const previewPanel = document.getElementById('previewPanel');
+    const previewContent = document.getElementById('previewContent');
+    
+    if (!previewPanel || !previewContent || !filteredPosts[selectedIndex]) return;
+    
+    const post = filteredPosts[selectedIndex];
+    
+    previewContent.innerHTML = `
+        <div class="preview-title">${post.title}</div>
+        <div class="preview-meta">${post.date} ${post.year} • ${post.words} words • ${post.tags.join(', ')}</div>
+        <div class="preview-description">${post.description}</div>
+    `;
+    
+    previewPanel.style.display = 'block';
+    currentPreviewIndex = selectedIndex;
+    showFeedback('Preview shown');
+}
+
+function hidePreview() {
+    const previewPanel = document.getElementById('previewPanel');
+    if (previewPanel) {
+        previewPanel.style.display = 'none';
+        currentPreviewIndex = -1;
+        showFeedback('Preview hidden');
+    }
+}
+
+// Update preview when selection changes (if preview is visible)
+function selectPost(index) {
+    if (index >= 0 && index < filteredPosts.length) {
+        selectedIndex = index;
+        renderResults();
+        
+        // If preview is visible and we moved to a different post, update preview
+        const previewPanel = document.getElementById('previewPanel');
+        if (previewPanel && previewPanel.style.display !== 'none' && currentPreviewIndex !== selectedIndex) {
+            showPreview();
+        }
+    }
+}
+
 // ===== EVENT LISTENERS =====
 
 function setupBlogSelectorEvents() {
@@ -234,7 +304,7 @@ function setupBlogSelectorEvents() {
                     break;
                 case 'Tab':
                     e.preventDefault();
-                    // Could implement preview functionality here
+                    togglePreview();
                     break;
                 case 'Escape':
                     e.preventDefault();

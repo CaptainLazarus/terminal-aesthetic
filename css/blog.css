@@ -74,6 +74,36 @@
     padding: 0;
 }
 
+.preview-panel {
+    background: var(--bg-tertiary);
+    border-top: 1px solid var(--border);
+    padding: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 0.9em;
+}
+
+.preview-content {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.preview-title {
+    color: var(--text-primary);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.preview-meta {
+    color: var(--text-muted);
+    font-size: 0.8em;
+    margin-bottom: 10px;
+}
+
+.preview-description {
+    color: var(--text-secondary);
+}
+
 .result-item {
     display: flex;
     align-items: center;
