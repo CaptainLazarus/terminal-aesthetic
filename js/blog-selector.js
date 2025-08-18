@@ -200,44 +200,62 @@ function setupBlogSelectorEvents() {
         filterPosts(e.target.value);
     });
 
-    // Keyboard navigation
-    searchInput.addEventListener('keydown', (e) => {
-        switch(e.key) {
-            case 'ArrowDown':
-                e.preventDefault();
-                selectPost(selectedIndex + 1);
-                break;
-            case 'ArrowUp':
-                e.preventDefault();
-                selectPost(selectedIndex - 1);
-                break;
-            case 'Enter':
-                e.preventDefault();
-                openSelectedPost();
-                break;
-            case 'Tab':
-                e.preventDefault();
-                // Could implement preview functionality here
-                break;
-            case 'Escape':
-                e.preventDefault();
-                goToMain();
-                break;
+    // Keyboard navigation - attach to document for global shortcuts
+    document.addEventListener('keydown', (e) => {
+        // Only handle blog-specific shortcuts if search input exists and we're focused on it or document
+        if (!searchInput) return;
+        
+        // Handle Alt key shortcuts globally
+        if (e.altKey) {
+            switch(e.key) {
+                case 'm':
+                    e.preventDefault();
+                    goToMain();
+                    return;
+            }
         }
         
-        // Ctrl combinations
-        if (e.ctrlKey) {
+        // Handle navigation only if search input is focused or no specific element is focused
+        if (document.activeElement === searchInput || document.activeElement === document.body) {
             switch(e.key) {
-                case 'c':
+                case 'ArrowDown':
                     e.preventDefault();
-                    copySelectedLink();
+                    searchInput.focus(); // Ensure search input stays focused
+                    selectPost(selectedIndex + 1);
                     break;
-                case 'o':
+                case 'ArrowUp':
                     e.preventDefault();
-                    if (filteredPosts[selectedIndex]) {
-                        window.open(filteredPosts[selectedIndex].link, '_blank');
-                    }
+                    searchInput.focus();
+                    selectPost(selectedIndex - 1);
                     break;
+                case 'Enter':
+                    e.preventDefault();
+                    openSelectedPost();
+                    break;
+                case 'Tab':
+                    e.preventDefault();
+                    // Could implement preview functionality here
+                    break;
+                case 'Escape':
+                    e.preventDefault();
+                    goToMain();
+                    break;
+            }
+            
+            // Ctrl combinations
+            if (e.ctrlKey) {
+                switch(e.key) {
+                    case 'c':
+                        e.preventDefault();
+                        copySelectedLink();
+                        break;
+                    case 'o':
+                        e.preventDefault();
+                        if (filteredPosts[selectedIndex]) {
+                            window.open(filteredPosts[selectedIndex].link, '_blank');
+                        }
+                        break;
+                }
             }
         }
     });
