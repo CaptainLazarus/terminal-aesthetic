@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monads 101 - As I get them - Terminal Blog</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+    <button class="layout-toggle" onclick="toggleLayoutSwitcher()" accesskey="l" title="Toggle layouts (Alt+L)">layouts</button>
+    
+    <div class="layout-switcher hidden" id="layoutSwitcher">
+        <h3>Post Layouts</h3>
+        <button onclick="showLayout('magazine')" class="active">Magazine Style</button>
+        <button onclick="showLayout('timeline')">Timeline View</button>
+        <button onclick="showLayout('terminal')">Terminal Session</button>
+        <button onclick="showLayout('minimal')">Minimal Clean</button>
+        <button onclick="showLayout('wide')">Wide Format</button>
+    </div>
+
+    <div class="shortcuts-help" id="shortcutsHelp">
+        <h4>Keyboard Shortcuts</h4>
+        <ul>
+            <li><kbd>Alt+T</kbd> Toggle themes</li>
+            <li><kbd>Alt+1-9</kbd> Color schemes</li>
+            <li><kbd>Alt+H</kbd> Toggle this help</li>
+            <li><kbd>Alt+L</kbd> Toggle layouts</li>
+            <li><kbd>Alt+M</kbd> Back to main</li>
+            <li><kbd>Esc</kbd> Close menus</li>
+        </ul>
+    </div>
+
+    <!-- Layout 1: Magazine Style (Default) -->
+    <div class="layout layout-magazine active" id="layout-magazine">
+        <div class="container">
+            <div style="padding: 15px 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: var(--text-muted); font-size: 0.9em;">~/posts/monads_101.md</span>
+                </div>
+            </div>
+            
+            <div class="blog-layout">
+                <main class="post-container terminal-window">
+                    <article class="post-content">
+                        <h1 class="post-title">Monads 101 - As I get them</h1>
+                        
+                        <div class="post-meta">
+                            <span>Published: September 01, 2025</span>
+                            <span>Author: CL</span>
+                        </div>
+
+                        <div style="font-style: italic; margin-bottom: 20px; color: var(--text-muted);">
+                            <p><strong>Note:</strong> I will assume</p>
+                            <ol>
+                                <li>You know some programming of Python, Lisp, Java, C/C++ or JS (any one is fine)</li>
+                                <li>You are aware of functional programming</li>
+                                <li>You know what macros are (nvm if you actually used them)</li>
+                                <li>You're interested in using monads, and not caring about the theory</li>
+                            </ol>
+                            <p>You're free to point out I'm wrong, but I would like to understand how. So I can learn too</p>
+                        </div>
+
+                        <hr>
+
+                        <p>I spent some time learning monads, and I must admit that after I got it, I felt an overwhelming disappointment that can only be attributed to annoyance at the simplicity of monads. Most people explain monads like they've never used them, or more appropriately, like they've used them a lot.</p>
+
+                        <p>This overwhelming tendency to explain monads in the broadest possible terms lends itself to an aura of mystique that is literally not deserved for something so relatively simple in its usage. To compensate for this blind spot, this is me learning how monads are used. I don't want to care for what they are, but I do want to know how to use them. So what are they?</p>
+
+                        <p><strong><em>TLDR: FP version of macros</em></strong></p>
+
+                        <p>Essentially</p>
+                        <ol>
+                            <li>They're fp macros with a lot more power<a href="#popup1" class="note-ref">[1]</a></li>
+                            <li>They're a design abstraction, not a fundamental part of code.</li>
+                        </ol>
+
+                        <!-- Popup note -->
+                        <div class="note-popup" id="popup1">
+                            <div class="popup-header">Not Actually Macros</div>
+                            <div class="popup-content">
+                                they're not actually macros, but it's a good starting point for some sort of intuition.
+                            </div>
+                        </div>
+
+                        <p>I'll explain 2 first, then get to 1. What do I mean they aren't a fundamental part of code?</p>
+
+                        <p>I mean that you can write programs without them. You will struggle and a lot more, but it can be done. They aren't like loops or control statements, which are essential parts of language. You could theoretically never use monads and live a happy life (albeit with ugly code).</p>
+
+                        <p>They're a design abstraction. Like macros in lisp. You don't need to write macros, but you're code becomes a lot more powerful if you do.</p>
+
+                        <p>So, rather than wax categorically and philosophically about what they are, let's go through some simple examples, and see exactly what they're doing.</p>
+
+                        <p>Code for getting a cartesian product from 2/3 lists</p>
+
+                        <pre><code>let l1 = [1 ; 2 ; 3];;
+let l2 = [4 ; 5 ; 6];;
+let l3 = ['a' ; 'b' ; 'c'];;
+
+let cartesian2 l1 l2 =
+  let output = ref [] in
+  List.iter (fun x ->
+    List.iter (fun y ->
+      output := (x, y) :: !output
+    ) l2
+  ) l1;
+  List.rev !output
+
+let cartesian3 l1 l2 l3 =
+  let output = ref [] in
+    List.iter (fun x ->
+        List.iter (fun y ->
+            List.iter (fun z ->
+                output := (x, y, z) :: !output
+            ) l3
+        ) l2
+    ) l1;
+  List.rev !output</code></pre>
+
+                        <p>Let's ignore for a moment the fact that this is using a List.iter. If I wrote it using pure funcs, it'll be slightly more annoying.</p>
+
+                        <p>The important thing to note is the headache writing this gives me. (You're free to attempt to test this out yourself)</p>
+
+                        <p>Now, lemme show you the monadic version</p>
+
+                        <pre><code>let l1 = [1 ; 2 ; 3];;
+let l2 = [4 ; 5 ; 6];;
+let l3 = ['a' ; 'b' ; 'c'];;
+
+let (>>=) x f = List.concat_map f x
+
+let cartesian2 l1 l2 = 
+    l1 >>= fun x ->
+    l2 >>= fun y ->
+        [(x,y)]
+
+let cartesian3 l1 l2 l3= 
+    l1 >>= fun x ->
+    l2 >>= fun y ->
+    l3 >>= fun z ->
+        [(x,y,z)]</code></pre>
+
+                        <p>Now, if you've ever done webdev, there's an interesting parallel here with.....Javascript, of all the seven hells. More specifically, callback hell<a href="#sidenote2" class="note-ref">[2]</a>. JS solved this through promise chaining + async/await. Basically, syntactic sugar to hide the ugly details underneath.</p>
+
+                        <!-- Sidenote - appears in margin -->
+                        <div class="sidenote" id="sidenote2">
+                            <span class="note-number">[2]</span>
+                            <div class="note-content">
+                                <a href="https://en.wikipedia.org/wiki/Pyramid_of_doom_(programming)" target="_blank">Pyramid of doom (programming) - Wikipedia</a>
+                            </div>
+                        </div>
+
+                        <p>In a (not really) similar vein, macros allow you to abstract away incredibly ugly details beneath a classy veneer of simplicity.</p>
+
+                        <p>And if I had to define what monads do, I would say that monads abstract over functions so that I can write complicated stuff more easily. In other words</p>
+
+                        <blockquote>Monads abstract away computational complexity for easier function chaining</blockquote>
+
+                        <p>That's it. Congratulations, you now have some idea of what monads do. To repeat,</p>
+                        <ol>
+                            <li>Abstract stuff so functions are easier to write.</li>
+                            <li>Prevent pyramid of doom</li>
+                        </ol>
+
+                        <p>That's it. That's all they do. There's a couple more examples below, but otherwise, yay! You know what they are. Also, they're a monoid in the category of endofunctors<a href="#sidenote3" class="note-ref">[3]</a>.</p>
+
+                        <!-- Sidenote - appears in margin -->
+                        <div class="sidenote" id="sidenote3">
+                            <span class="note-number">[3]</span>
+                            <div class="note-content">
+                                <a href="https://youtu.be/srQt1NAHYC0?si=EwgocwChX7MlHG7M" target="_blank">A Monad is just a monoid in the category of endofunctors - YouTube</a>
+                            </div>
+                        </div>
+
+                        <p><em>P.S: I would recommend that you use claude/gpt/deepseek and go solving simple problems like chaining 2 funcs to more complex conditionals and graph stuff to get an intuition for monads. They're good teachers, though do be cautious of mistakes they'll make. Run the code you get, and practice often.</em></p>
+
+                        <hr>
+
+                        <h2>Examples of different monads</h2>
+
+                        <p>Simple Counter using a state monad</p>
+
+                        <pre><code>type 'a state = State of (int -> int * 'a);;
+let get = State (fun s -> (s,s));;
+let put s = State (fun _ -> s,());;
+let return x = State (fun s -> s,x);;
+let run_state (State f) x = f x;;
+let (>>=) (State comp) f = State (
+    fun s -> 
+        let s',a = comp s in
+        let State comp' = f a in
+        comp' s'
+)
+
+let increment = get >>= fun s -> put (s+1);;
+let reset_counter = get >>= fun _ -> put 0;; 
+let rec reset_at_30 = get >>= fun s ->
+    if s >= 30 then reset_counter
+    else increment >>= fun _ -> reset_at_30
+;;
+run_state reset_at_30 0</code></pre>
+
+                        <!-- Footer notes section -->
+                        <div class="footer-notes">
+                            <h3>Notes</h3>
+                            
+                            <div class="footnote grid-style">
+                                <div class="footnote-number">[1]</div>
+                                <div class="footnote-content">
+                                    they're not actually macros, but it's a good starting point for some sort of intuition.
+                                </div>
+                            </div>
+                            
+                            <div class="footnote grid-style">
+                                <div class="footnote-number">[2]</div>
+                                <div class="footnote-content">
+                                    https://en.wikipedia.org/wiki/Pyramid_of_doom_(programming)
+                                </div>
+                            </div>
+
+                            <div class="footnote grid-style">
+                                <div class="footnote-number">[3]</div>
+                                <div class="footnote-content">
+                                    https://youtu.be/srQt1NAHYC0?si=EwgocwChX7MlHG7M
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </main>
+
+                <aside class="sidebar terminal-window">
+                    <div style="margin-bottom: 25px;">
+                        <h3>Table of Contents</h3>
+                        <ul>
+                            <li><a href="#intro">Introduction</a></li>
+                            <li><a href="#what-are-monads">What are monads?</a></li>
+                            <li><a href="#cartesian-example">Cartesian Product Example</a></li>
+                            <li><a href="#examples">Examples of different monads</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3>About This Post</h3>
+                        <div style="font-size: 0.85em; color: var(--text-muted); line-height: 1.6;">
+                            A practical, no-nonsense introduction to monads focusing on usage rather than theory.<br><br>
+                            Click the numbered references to see sidenotes and popups.
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout 2: Timeline Style -->
+    <div class="layout layout-timeline" id="layout-timeline">
+        <div class="container">
+            <header class="header terminal-window">
+                <h1>~/blog/timeline</h1>
+                <div class="breadcrumb">user@blog:~/posts$ git show HEAD</div>
+                <nav>
+                    <a href="../index.html" class="nav-btn">← Back to Main</a>
+                </nav>
+            </header>
+
+            <div class="blog-layout">
+                <article class="post-container terminal-window">
+                    <div class="timestamp">Sep 01<br>2025<br>12:00</div>
+                    
+                    <div class="post-content">
+                        <h1 class="post-title">Monads 101 - As I get them</h1>
+                        
+                        <div class="post-meta">
+                            <span>Author: CL</span>
+                            <span>Commit: a1b2c3d</span>
+                            <span>Branch: functional-programming</span>
+                        </div>
+
+                        <p>I spent some time learning monads, and I must admit that after I got it, I felt an overwhelming disappointment that can only be attributed to annoyance at the simplicity of monads. Most people explain monads like they've never used them, or more appropriately, like they've used them a lot.</p>
+
+                        <p><strong><em>TLDR: FP version of macros</em></strong></p>
+
+                        <h2>What are monads?</h2>
+                        <p>They're a design abstraction, not a fundamental part of code. You can write programs without them, but your code becomes much more powerful if you use them.</p>
+
+                        <pre><code>let (>>=) x f = List.concat_map f x
+
+let cartesian2 l1 l2 = 
+    l1 >>= fun x ->
+    l2 >>= fun y ->
+        [(x,y)]</code></pre>
+
+                        <blockquote>Monads abstract away computational complexity for easier function chaining</blockquote>
+
+                        <p>That's it. They abstract stuff so functions are easier to write and prevent pyramid of doom.</p>
+
+                        <div class="tags">
+                            <span class="tag">FP</span>
+                            <span class="tag">monads</span>
+                            <span class="tag">tutorial</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout 3: Terminal Session -->
+    <div class="layout layout-terminal" id="layout-terminal">
+        <div class="container">
+            <header class="header terminal-window">
+                <h1>~/blog/session</h1>
+                <div class="breadcrumb">user@blog:~/posts$ vim monads_101.md</div>
+                <nav>
+                    <a href="../index.html" class="nav-btn">← Back to Main</a>
+                </nav>
+            </header>
+
+            <div class="blog-layout">
+                <div class="terminal-session terminal-window">
+                    <div class="terminal-header">monads_101.md</div>
+                    
+                    <div class="terminal-content">
+                        <article class="post-content">
+                            <h1 class="post-title">Monads 101 - As I get them</h1>
+                            
+                            <div class="post-meta">
+                                <span>Lines: 89</span>
+                                <span>Words: 524</span>
+                                <span>Chars: 3,142</span>
+                                <span>Modified: Sep 01 12:00</span>
+                            </div>
+
+                            <p>I spent some time learning monads, and I must admit that after I got it, I felt an overwhelming disappointment that can only be attributed to annoyance at the simplicity of monads.</p>
+
+                            <p><strong><em>TLDR: FP version of macros</em></strong></p>
+
+                            <p>Essentially they're a design abstraction that makes function chaining easier. Here's the comparison:</p>
+
+                            <pre><code>// Ugly nested version
+let cartesian2 l1 l2 =
+  let output = ref [] in
+  List.iter (fun x ->
+    List.iter (fun y ->
+      output := (x, y) :: !output
+    ) l2
+  ) l1;
+  List.rev !output
+
+// Clean monadic version  
+let cartesian2 l1 l2 = 
+    l1 >>= fun x ->
+    l2 >>= fun y ->
+        [(x,y)]</code></pre>
+
+                            <blockquote>Monads abstract away computational complexity for easier function chaining</blockquote>
+
+                            <p>That's it. They prevent pyramid of doom and make functions easier to write.</p>
+
+                            <div class="tags">
+                                <span class="tag">FP</span>
+                                <span class="tag">monads</span>
+                                <span class="tag">tutorial</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout 4: Wide Format -->
+    <div class="layout layout-wide" id="layout-wide">
+        <div class="container">
+            <header class="header terminal-window">
+                <h1>~/blog/wide</h1>
+                <div class="breadcrumb">user@blog:~/posts$ column -t monads_101.md</div>
+                <nav>
+                    <a href="../index.html" class="nav-btn">← Back to Main</a>
+                </nav>
+            </header>
+
+            <div class="blog-layout">
+                <article class="post-container terminal-window">
+                    <div class="post-content">
+                        <h1 class="post-title">Monads 101 - As I get them</h1>
+                        
+                        <div class="post-meta">
+                            <span>Published: September 01, 2025</span>
+                            <span>Author: CL</span>
+                            <span>Reading time: 4 minutes</span>
+                            <span>Columns: 2</span>
+                        </div>
+
+                        <p>I spent some time learning monads, and I must admit that after I got it, I felt an overwhelming disappointment that can only be attributed to annoyance at the simplicity of monads. Most people explain monads like they've never used them, or more appropriately, like they've used them a lot.</p>
+
+                        <p><strong><em>TLDR: FP version of macros</em></strong> - They're a design abstraction that makes function chaining easier by abstracting away computational complexity. Think of them as preventing pyramid of doom in functional programming, similar to how promises solved callback hell in JavaScript.</p>
+
+                        <div class="tags">
+                            <span class="tag">FP</span>
+                            <span class="tag">monads</span>
+                            <span class="tag">tutorial</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout 5: Minimal Clean -->
+    <div class="layout layout-minimal" id="layout-minimal">
+        <div class="container">
+            <header class="header terminal-window">
+                <h1>~/blog/minimal</h1>
+                <div class="breadcrumb">user@blog:~/posts$ head -n 50 monads_101.md</div>
+                <nav>
+                    <a href="../index.html" class="nav-btn">← Back to Main</a>
+                </nav>
+            </header>
+
+            <div class="blog-layout">
+                <article class="post-container terminal-window">
+                    <div class="post-content">
+                        <h1 class="post-title">Monads 101 - As I get them</h1>
+                        
+                        <div class="post-meta">
+                            <span>Published: September 01, 2025</span>
+                            <span>Author: CL</span>
+                            <span>Reading time: 4 minutes</span>
+                        </div>
+
+                        <p>I spent some time learning monads, and I must admit that after I got it, I felt an overwhelming disappointment that can only be attributed to annoyance at the simplicity of monads.</p>
+
+                        <p><strong><em>TLDR: FP version of macros</em></strong></p>
+
+                        <p>They're a design abstraction, not a fundamental part of code. You can write programs without them, but your code becomes much more powerful if you use them.</p>
+
+                        <pre><code>let (>>=) x f = List.concat_map f x
+
+let cartesian2 l1 l2 = 
+    l1 >>= fun x ->
+    l2 >>= fun y ->
+        [(x,y)]</code></pre>
+
+                        <blockquote>Monads abstract away computational complexity for easier function chaining</blockquote>
+
+                        <p>That's it. They abstract stuff so functions are easier to write and prevent pyramid of doom.</p>
+
+                        <div class="tags">
+                            <span class="tag">FP</span>
+                            <span class="tag">monads</span>
+                            <span class="tag">tutorial</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/shared.js"></script>
+    <script>
+        function showLayout(layoutName) {
+            // Hide all layouts
+            document.querySelectorAll('.layout').forEach(layout => {
+                layout.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.layout-switcher button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected layout
+            document.getElementById('layout-' + layoutName).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Hide switcher after selection
+            document.getElementById('layoutSwitcher').classList.add('hidden');
+        }
+
+        function toggleLayoutSwitcher() {
+            const switcher = document.getElementById('layoutSwitcher');
+            switcher.classList.toggle('hidden');
+        }
+
+        // Close switcher when clicking outside
+        document.addEventListener('click', function(event) {
+            const switcher = document.getElementById('layoutSwitcher');
+            const toggle = document.querySelector('.layout-toggle');
+            
+            if (!switcher.contains(event.target) && !toggle.contains(event.target)) {
+                switcher.classList.add('hidden');
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            if (event.altKey && event.key === 'l') {
+                event.preventDefault();
+                toggleLayoutSwitcher();
+            }
+            
+            // Escape key closes menus
+            if (event.key === 'Escape') {
+                document.getElementById('layoutSwitcher').classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building Terminal-Style Websites</title>
+    <title>Feature Demo - Terminal Blog</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/blog.css">
 </head>
@@ -34,211 +34,74 @@
     <!-- Layout 1: Magazine Style (Default) -->
     <div class="layout layout-magazine active" id="layout-magazine">
         <div class="container">
-<!-- OPTION 3: Command Line Style -->
-<!-- OPTION 4: Super Minimal -->
-<div style="padding: 15px 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px;">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span style="color: var(--text-muted); font-size: 0.9em;">~/posts/building_terminal_websites.md</span>
-        <!-- <a href="../index.html" class="nav-btn icon-style">Back</a> -->
-    </div>
-</div>
+            <div style="padding: 15px 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: var(--text-muted); font-size: 0.9em;">~/posts/feature_demo.md</span>
+                </div>
+            </div>
+            
             <div class="blog-layout">
                 <main class="post-container terminal-window">
                     <article class="post-content">
-                        <h1 class="post-title">Building Terminal-Style Websites: A Modern Approach</h1>
+                        <h1 class="post-title">Feature Demo</h1>
                         
                         <div class="post-meta">
-                            <span>Published: August 18, 2025</span>
-                            <span>Author: terminal_user</span>
-                            <span>Size: 4.2KB</span>
+                            <span>Published: August 30, 2025</span>
+                            <span>Author: ---</span>
+                            <!-- <span>Size: 2.1KB</span> -->
                         </div>
 
-                        <p>In an era of increasingly complex web frameworks and bloated JavaScript bundles, there's something refreshing about returning to the fundamentals. Terminal-style websites offer a unique blend of nostalgia, functionality, and aesthetic appeal<a href="#sidenote1" class="note-ref">[1]</a> that cuts through the noise of modern web design.</p>
+                        <h2>Try This Stuff</h2>
+
+                        <p>Click "layouts" button (top left) or press <kbd>Alt+L</kbd>.</p>
+
+                        <p>Click this number<a href="#sidenote1" class="note-ref">[1]</a> to see sidenote.</p>
 
                         <!-- Sidenote - appears in margin -->
                         <div class="sidenote" id="sidenote1">
                             <span class="note-number">[1]</span>
                             <div class="note-content">
-                                The terminal aesthetic represents a philosophy of purposeful design where every element serves a function, every color has meaning, and complexity is stripped away in favor of clarity.
+                                This appears when you hover.
                             </div>
                         </div>
 
-                        <h2 id="philosophy">The Philosophy Behind Terminal Design</h2>
-
-                        <p>Terminal interfaces weren't designed to be pretty—they were designed to be functional<a href="#popup1" class="note-ref">[2]</a>. Every character, every color, every layout decision serves a purpose. This philosophy of intentional design is exactly what modern web development often lacks.</p>
+                        <p>Click this number<a href="#popup1" class="note-ref">[2]</a> for popup.</p>
 
                         <!-- Popup note -->
                         <div class="note-popup" id="popup1">
-                            <div class="popup-header">Terminal Design History</div>
+                            <div class="popup-header">Popup Example</div>
                             <div class="popup-content">
-                                The first computer terminals were typewriters connected to mainframes. The VT100 (1978) established the 80x24 grid and escape sequences we still use today.
+                                This opens when you click.
                             </div>
                         </div>
 
-                        <p>When we strip away the unnecessary animations, the gradient backgrounds, and the endless carousel components, we're left with something pure: content and functionality working in harmony.</p>
+                        <p>Press <kbd>Alt+H</kbd> for shortcuts.</p>
 
-                        <h3>Why Monospace Fonts Matter</h3>
+                        <p>Press <kbd>Esc</kbd> to close <i>some</i> things.</p>
 
-                        <p>Monospace fonts like Courier New aren't just nostalgic—they're practical<a href="#sidenote2" class="note-ref">[3]</a>. Each character takes up the same amount of space, creating a natural grid that makes text scannable and layouts predictable. This consistency is something that variable-width fonts simply can't provide.</p>
-
-                        <!-- Another sidenote -->
-                        <div class="sidenote" id="sidenote2">
-                            <span class="note-number">[3]</span>
-                            <div class="note-content">
-                                Studies show monospace fonts improve reading comprehension for users with dyslexia by reducing visual stress and making text easier to track.
-                            </div>
-                        </div>
-
-                        <ul>
-                            <li>Perfect alignment for tables and lists</li>
-                            <li>Consistent spacing makes reading more rhythmic</li>
-                            <li>Natural grid system without CSS Grid</li>
-                            <li>Clear distinction between different types of content</li>
-                        </ul>
-
-                        <h2 id="implementation">Technical Implementation</h2>
-
-                        <p>Building a terminal-style website doesn't require complex frameworks or build tools<a href="#popup2" class="note-ref">[4]</a>. In fact, the opposite is true—the simpler your stack, the more authentic the result.</p>
-
-                        <!-- Popup note about simple stacks -->
-                        <div class="note-popup" id="popup2">
-                            <div class="popup-header">Simple Technology Benefits</div>
-                            <div class="popup-content">
-                                Vanilla HTML/CSS/JS offers instant feedback, easy debugging, smaller bundles, and works anywhere without build tools or framework dependencies.
-                            </div>
-                        </div>
-
-                        <h3>CSS Custom Properties</h3>
-
-                        <p>Modern CSS gives us powerful tools for creating themeable interfaces. Using CSS custom properties (variables), we can create multiple color schemes that users can switch between dynamically<a href="#sidenote3" class="note-ref">[5]</a>:</p>
-
-                        <!-- Sidenote about CSS variables -->
-                        <div class="sidenote" id="sidenote3">
-                            <span class="note-number">[5]</span>
-                            <div class="note-content">
-                                CSS custom properties have 96%+ browser support and offer advantages over preprocessor variables: they're reactive, can be changed with JavaScript, and cascade naturally.
-                            </div>
-                        </div>
-
-                        <pre><code>:root {
-  --bg-primary: #1a0d1a;
-  --bg-secondary: #2d1a2d;
-  --text-primary: #bb88ff;
-  --accent: #bb88ff;
+                        <pre><code>// Code looks like this
+function demo() {
+    console.log("hello");
 }</code></pre>
 
-                        <p>This approach allows for easy theming while maintaining consistency across all components.</p>
-
-                        <h3>Semantic HTML Structure</h3>
-
-                        <p>Terminal interfaces are naturally hierarchical, and so should be our HTML. Using proper semantic elements like <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;nav&gt;</code> creates a document structure that both screen readers and search engines can understand.</p>
-
-                        <blockquote>
-                            "The best interface is the one that gets out of your way and lets you focus on what matters: the content."
-                        </blockquote>
-
-                        <h2 id="design">Design Principles</h2>
-
-                        <p>Creating an effective terminal-style design requires following certain principles that have made command-line interfaces successful for decades<a href="#popup3" class="note-ref">[6]</a>.</p>
-
-                        <!-- Popup about design principles -->
-                        <div class="note-popup" id="popup3">
-                            <div class="popup-header">50+ Years of Terminal Evolution</div>
-                            <div class="popup-content">
-                                Terminal design principles evolved from the 1970s through today, refined by decades of professional use. They survived because they minimize cognitive load while maximizing information density.
+                        <!-- Footer notes section -->
+                        <div class="footer-notes">
+                            <h3>Notes</h3>
+                            
+                            <div class="footnote grid-style">
+                                <div class="footnote-number">[1]</div>
+                                <div class="footnote-content">
+                                    Sidenotes show on hover.
+                                </div>
+                            </div>
+                            
+                            <div class="footnote grid-style">
+                                <div class="footnote-number">[2]</div>
+                                <div class="footnote-content">
+                                    Popups open on click.
+                                </div>
                             </div>
                         </div>
-
-                        <h3>Information Hierarchy</h3>
-
-                        <p>In terminals, the most important information is always the most prominent. Commands are bright, output is dimmer, and metadata is dimmer still. This natural hierarchy guides the user's attention exactly where it needs to go.</p>
-
-                        <h3>Consistent Color Usage</h3>
-
-                        <p>Traditional terminals use color sparingly but meaningfully. Errors are red, success is green, warnings are yellow. Each color has a semantic meaning that users understand intuitively.</p>
-
-                        <h3>Respect for White Space</h3>
-
-                        <p>Terminals naturally create white space through their grid-based layout. This isn't wasted space—it's breathing room that makes dense information digestible.</p>
-
-                        <h2 id="accessibility">Accessibility Considerations</h2>
-
-                        <p>Terminal interfaces are inherently accessible. They're keyboard-navigable, use high contrast colors, and present information in a logical, linear fashion. When building terminal-style websites, we can leverage these accessibility benefits.</p>
-
-                        <ul>
-                            <li>High contrast color schemes improve readability</li>
-                            <li>Keyboard shortcuts feel natural in a terminal context</li>
-                            <li>Monospace fonts are easier to read for many people</li>
-                            <li>Simple layouts work well with screen readers</li>
-                        </ul>
-
-                        <h2 id="performance">Performance Benefits</h2>
-
-                        <p>Terminal-style websites are naturally performant. Without heavy images, complex animations, or JavaScript frameworks, they load quickly and run smoothly on any device.</p>
-
-                        <p>This isn't just about nostalgia—it's about creating websites that work for everyone, regardless of their internet connection or device capabilities.</p>
-
-                        <h2 id="future">The Future of Terminal Design</h2>
-
-                        <p>As web development continues to evolve, the principles behind terminal design remain relevant. Clarity, functionality, and user focus never go out of style.</p>
-
-                        <p>Terminal-style websites represent more than just an aesthetic choice—they're a statement about what we value in digital interfaces. In a world of infinite scroll and endless distractions, sometimes the most radical choice is simplicity.</p>
-
-                        <!-- Footer notes section -->
-<div class="footer-notes">
-    <h3>Notes and References</h3>
-    
-    <div class="footnote grid-style">
-        <div class="footnote-number">[1]</div>
-        <div class="footnote-content">
-            The aesthetic appeal of terminal interfaces stems from their clarity and purposefulness, not visual decoration. This creates a distinctive look that stands out in today's visually cluttered web.
-        </div>
-    </div>
-    
-    <div class="footnote grid-style">
-        <div class="footnote-number">[2]</div>
-        <div class="footnote-content">
-            Early terminals were constrained by hardware limitations, which led to efficient design patterns that are still relevant today. The VT100 terminal, released in 1978, became the de facto standard.
-        </div>
-    </div>
-    
-    <div class="footnote grid-style">
-        <div class="footnote-number">[3]</div>
-        <div class="footnote-content">
-            Monospace fonts provide functional benefits including better accessibility for users with reading difficulties and natural grid alignment for complex layouts.
-        </div>
-    </div>
-    
-    <div class="footnote grid-style">
-        <div class="footnote-number">[4]</div>
-        <div class="footnote-content">
-            Simple technology stacks align with the terminal philosophy of doing one thing well. They also offer better performance, easier maintenance, and wider compatibility.
-        </div>
-    </div>
-    
-    <div class="footnote grid-style">
-        <div class="footnote-number">[5]</div>
-        <div class="footnote-content">
-            CSS custom properties offer advantages over preprocessor variables with better performance, reactivity, and the ability to be changed dynamically with JavaScript.
-        </div>
-    </div>
-    
-    <div class="footnote grid-style">
-        <div class="footnote-number">[6]</div>
-        <div class="footnote-content">
-            Terminal design principles have been battle-tested over 50+ years of use in professional computing environments, making them reliable patterns for efficiency and clarity.
-        </div>
-    </div>
-</div>
-
-                        <!-- <div class="tags"> -->
-                        <!--     <span class="tag">web-design</span> -->
-                        <!--     <span class="tag">terminal</span> -->
-                        <!--     <span class="tag">css</span> -->
-                        <!--     <span class="tag">accessibility</span> -->
-                        <!--     <span class="tag">performance</span> -->
-                        <!--     <span class="tag">minimalism</span> -->
-                        <!-- </div> -->
                     </article>
                 </main>
 
@@ -246,22 +109,18 @@
                     <div style="margin-bottom: 25px;">
                         <h3>Table of Contents</h3>
                         <ul>
-                            <li><a href="#philosophy">Philosophy</a></li>
-                            <li><a href="#implementation">Implementation</a></li>
-                            <li><a href="#design">Design Principles</a></li>
-                            <li><a href="#accessibility">Accessibility</a></li>
-                            <li><a href="#performance">Performance</a></li>
-                            <li><a href="#future">Future</a></li>
+                            <li><a href="#layout-switching">Layout Switching</a></li>
+                            <li><a href="#notes">Interactive Notes</a></li>
+                            <li><a href="#keyboard">Keyboard Shortcuts</a></li>
+                            <li><a href="#themes">Theme Support</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h3>About This Post</h3>
+                        <h3>About This Demo</h3>
                         <div style="font-size: 0.85em; color: var(--text-muted); line-height: 1.6;">
-                            A guide to building websites with terminal aesthetics 
-                            and the philosophy behind minimalist web design.<br><br>
-                            Topics covered: CSS custom properties, monospace typography, 
-                            accessibility considerations, and performance benefits.
+                            Quick demo of interactive features.<br><br>
+                            Try clicking buttons and hovering over numbers.
                         </div>
                     </div>
                 </aside>
@@ -282,81 +141,40 @@
 
             <div class="blog-layout">
                 <article class="post-container terminal-window">
-                    <div class="timestamp">Aug 18<br>2025<br>14:30</div>
+                    <div class="timestamp">Aug 30<br>2025<br>15:42</div>
                     
                     <div class="post-content">
-                        <h1 class="post-title">Building Terminal-Style Websites</h1>
+                        <h1 class="post-title">Terminal Blog Features Demo</h1>
                         
                         <div class="post-meta">
-                            <span>Author: terminal_user</span>
-                            <span>Commit: a3f7b2c</span>
-                            <span>Branch: main</span>
+                            <span>Author: demo_user</span>
+                            <span>Commit: f3a7c2d</span>
+                            <span>Branch: features</span>
                         </div>
 
-                        <p>In an era of increasingly complex web frameworks and bloated JavaScript bundles, there's something refreshing about returning to the fundamentals. Terminal-style websites offer a unique blend of nostalgia, functionality, and aesthetic appeal that cuts through the noise of modern web design.</p>
+                        <p>This post demonstrates all the interactive features available in this terminal-style blog. Try switching between different layouts and exploring the various note types.</p>
 
-                        <h2>The Philosophy Behind Terminal Design</h2>
+                        <h2>Layout Switching</h2>
+                        <p>Five different presentation styles available via the layouts button or Alt+L shortcut.</p>
 
-                        <p>Terminal interfaces weren't designed to be pretty—they were designed to be functional. Every character, every color, every layout decision serves a purpose. This philosophy of intentional design is exactly what modern web development often lacks.</p>
+                        <h2>Interactive Notes</h2>
+                        <p>Three types: sidenotes for quick context, popups for detailed explanations, and footnotes for formal citations.</p>
 
-                        <p>When we strip away the unnecessary animations, the gradient backgrounds, and the endless carousel components, we're left with something pure: content and functionality working in harmony.</p>
-
-                        <h3>Why Monospace Fonts Matter</h3>
-
-                        <p>Monospace fonts like Courier New aren't just nostalgic—they're practical. Each character takes up the same amount of space, creating a natural grid that makes text scannable and layouts predictable.</p>
-
-                        <ul>
-                            <li>Perfect alignment for tables and lists</li>
-                            <li>Consistent spacing makes reading more rhythmic</li>
-                            <li>Natural grid system without CSS Grid</li>
-                            <li>Clear distinction between different types of content</li>
-                        </ul>
-
-                        <h2 id="implementation">Technical Implementation</h2>
-
-                        <p>Building a terminal-style website doesn't require complex frameworks or build tools. In fact, the opposite is true—the simpler your stack, the more authentic the result.</p>
-
-                        <h3>CSS Custom Properties</h3>
-
-                        <p>Modern CSS gives us powerful tools for creating themeable interfaces. Using CSS custom properties (variables), we can create multiple color schemes that users can switch between dynamically:</p>
-
-                        <pre><code>:root {
-  --bg-primary: #1a0d1a;
-  --bg-secondary: #2d1a2d;
-  --text-primary: #bb88ff;
-  --accent: #bb88ff;
+                        <pre><code>// Layout switching example
+function switchLayout(name) {
+    document.getElementById(`layout-${name}`)
+        .classList.add('active');
 }</code></pre>
 
-                        <p>This approach allows for easy theming while maintaining consistency across all components.</p>
+                        <h2>Keyboard Shortcuts</h2>
+                        <p>Alt+H shows all shortcuts. Terminal aesthetic makes keyboard navigation feel natural.</p>
 
-                        <h2 id="design">Design Principles</h2>
-
-                        <p>Creating an effective terminal-style design requires following certain principles that have made command-line interfaces successful for decades.</p>
-
-                        <h3 id="accessibility">Information Hierarchy</h3>
-
-                        <p>In terminals, the most important information is always the most prominent. Commands are bright, output is dimmer, and metadata is dimmer still. This natural hierarchy guides the user's attention exactly where it needs to go.</p>
-
-                        <blockquote>
-                            "The best interface is the one that gets out of your way and lets you focus on what matters: the content."
-                        </blockquote>
-
-                        <h2 id="performance">Performance Benefits</h2>
-
-                        <p>Terminal-style websites are naturally performant. Without heavy images, complex animations, or JavaScript frameworks, they load quickly and run smoothly on any device.</p>
-
-                        <p>This isn't just about nostalgia—it's about creating websites that work for everyone, regardless of their internet connection or device capabilities.</p>
-
-                        <h2 id="future">The Future of Terminal Design</h2>
-
-                        <p>As web development continues to evolve, the principles behind terminal design remain relevant. Clarity, functionality, and user focus never go out of style.</p>
-
-                        <p>Terminal-style websites represent more than just an aesthetic choice—they're a statement about what we value in digital interfaces. In a world of infinite scroll and endless distractions, sometimes the most radical choice is simplicity.</p>
+                        <blockquote>"Good design is invisible - it gets out of the way and lets content shine."</blockquote>
 
                         <div class="tags">
-                            <span class="tag">web-design</span>
-                            <span class="tag">terminal</span>
-                            <span class="tag">minimalism</span>
+                            <span class="tag">demo</span>
+                            <span class="tag">features</span>
+                            <span class="tag">layouts</span>
                         </div>
                     </div>
                 </article>
@@ -369,7 +187,7 @@
         <div class="container">
             <header class="header terminal-window">
                 <h1>~/blog/session</h1>
-                <div class="breadcrumb">user@blog:~/posts$ vim latest_post.md</div>
+                <div class="breadcrumb">user@blog:~/posts$ vim feature_demo.md</div>
                 <nav>
                     <a href="../index.html" class="nav-btn">← Back to Main</a>
                 </nav>
@@ -377,82 +195,52 @@
 
             <div class="blog-layout">
                 <div class="terminal-session terminal-window">
-                    <div class="terminal-header">building_terminal_websites.md</div>
+                    <div class="terminal-header">feature_demo.md</div>
                     
                     <div class="terminal-content">
                         <article class="post-content">
-                            <h1 class="post-title">Building Terminal-Style Websites</h1>
+                            <h1 class="post-title">Terminal Blog Features Demo</h1>
                             
                             <div class="post-meta">
-                                <span>Lines: 247</span>
-                                <span>Words: 847</span>
-                                <span>Chars: 4,293</span>
-                                <span>Modified: Aug 18 14:30</span>
+                                <span>Lines: 156</span>
+                                <span>Words: 423</span>
+                                <span>Chars: 2,187</span>
+                                <span>Modified: Aug 30 15:42</span>
                             </div>
 
-                            <p>In an era of increasingly complex web frameworks and bloated JavaScript bundles, there's something refreshing about returning to the fundamentals. Terminal-style websites offer a unique blend of nostalgia, functionality, and aesthetic appeal that cuts through the noise of modern web design.</p>
+                            <p>This post demonstrates all the interactive features available in this terminal-style blog. Try switching between different layouts and exploring the various note types.</p>
 
-                            <h2 id="philosophy">The Philosophy Behind Terminal Design</h2>
-
-                            <p>Terminal interfaces weren't designed to be pretty—they were designed to be functional. Every character, every color, every layout decision serves a purpose. This philosophy of intentional design is exactly what modern web development often lacks.</p>
-
-                            <h3>Why Monospace Fonts Matter</h3>
-
-                            <p>Monospace fonts like Courier New aren't just nostalgic—they're practical. Each character takes up the same amount of space, creating a natural grid that makes text scannable and layouts predictable.</p>
+                            <h2 id="layout-switching">Layout Switching</h2>
+                            <p>Click the "layouts" button or press Alt+L to switch between five different presentation styles:</p>
 
                             <ul>
-                                <li>Perfect alignment for tables and lists</li>
-                                <li>Consistent spacing makes reading more rhythmic</li>
-                                <li>Natural grid system without CSS Grid</li>
-                                <li>Clear distinction between content types</li>
+                                <li>Magazine Style - Full-featured with sidebar</li>
+                                <li>Timeline View - Git-inspired chronological display</li>
+                                <li>Terminal Session - Vim-like editor appearance</li>
+                                <li>Wide Format - Newspaper columns</li>
+                                <li>Minimal Clean - Distraction-free reading</li>
                             </ul>
 
-                            <h2 id="implementation">Technical Implementation</h2>
+                            <h2 id="notes">Interactive Notes</h2>
+                            <p>Three types of notes available: sidenotes, popups, and footnotes.</p>
 
-                            <p>Building a terminal-style website doesn't require complex frameworks or build tools. In fact, the opposite is true—the simpler your stack, the more authentic the result.</p>
-
-                            <pre><code>/* CSS Custom Properties for theming */
-:root {
-    --bg-primary: #1a0d1a;
-    --bg-secondary: #2d1a2d;
-    --text-primary: #bb88ff;
-    --accent: #bb88ff;
+                            <pre><code>/* Terminal styling example */
+.terminal-window {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    font-family: 'Courier New', monospace;
 }</code></pre>
 
-                            <p>This approach allows for easy theming while maintaining consistency across all components.</p>
+                            <h2 id="keyboard">Keyboard Shortcuts</h2>
+                            <p>Press Alt+H to see all available shortcuts. The terminal aesthetic makes keyboard navigation feel natural.</p>
 
-                            <h2 id="design">Design Principles</h2>
-
-                            <p>Creating an effective terminal-style design requires following certain principles that have made command-line interfaces successful for decades.</p>
-
-                            <h3 id="accessibility">Accessibility Considerations</h3>
-
-                            <p>Terminal interfaces are inherently accessible. They're keyboard-navigable, use high contrast colors, and present information in a logical, linear fashion.</p>
-
-                            <ul>
-                                <li>High contrast color schemes improve readability</li>
-                                <li>Keyboard shortcuts feel natural in a terminal context</li>
-                                <li>Monospace fonts are easier to read for many people</li>
-                                <li>Simple layouts work well with screen readers</li>
-                            </ul>
-
-                            <blockquote>
-                                "The best interface is the one that gets out of your way and lets you focus on what matters: the content."
-                            </blockquote>
-
-                            <h2 id="performance">Performance Benefits</h2>
-
-                            <p>Terminal-style websites are naturally performant. Without heavy images, complex animations, or JavaScript frameworks, they load quickly and run smoothly on any device.</p>
-
-                            <h2 id="future">The Future of Terminal Design</h2>
-
-                            <p>Terminal-style websites represent more than just an aesthetic choice—they're a statement about what we value in digital interfaces.</p>
+                            <blockquote>"Good design is invisible - it gets out of the way and lets content shine."</blockquote>
 
                             <div class="tags">
-                                <span class="tag">web-design</span>
+                                <span class="tag">demo</span>
+                                <span class="tag">features</span>
                                 <span class="tag">terminal</span>
-                                <span class="tag">css</span>
-                                <span class="tag">minimalism</span>
+                                <span class="tag">layouts</span>
                             </div>
                         </article>
                     </div>
@@ -466,7 +254,7 @@
         <div class="container">
             <header class="header terminal-window">
                 <h1>~/blog/wide</h1>
-                <div class="breadcrumb">user@blog:~/posts$ column -t article.md</div>
+                <div class="breadcrumb">user@blog:~/posts$ column -t feature_demo.md</div>
                 <nav>
                     <a href="../index.html" class="nav-btn">← Back to Main</a>
                 </nav>
@@ -475,26 +263,23 @@
             <div class="blog-layout">
                 <article class="post-container terminal-window">
                     <div class="post-content">
-                        <h1 class="post-title">Building Terminal-Style Websites: A Modern Approach</h1>
+                        <h1 class="post-title">Terminal Blog Features Demo</h1>
                         
                         <div class="post-meta">
-                            <span>Published: August 18, 2025</span>
-                            <span>Author: terminal_user</span>
-                            <span>Reading time: 8 minutes</span>
+                            <span>Published: August 30, 2025</span>
+                            <span>Author: demo_user</span>
+                            <span>Reading time: 3 minutes</span>
                             <span>Columns: 2</span>
                         </div>
 
-                        <p>In an era of increasingly complex web frameworks and bloated JavaScript bundles, there's something refreshing about returning to the fundamentals. Terminal-style websites offer a unique blend of nostalgia, functionality, and aesthetic appeal that cuts through the noise of modern web design.</p>
+                        <p>This post demonstrates all the interactive features available in this terminal-style blog. The wide format displays content in newspaper-style columns for improved readability on larger screens.</p>
 
-                        <p>Terminal interfaces weren't designed to be pretty—they were designed to be functional. Every character, every color, every layout decision serves a purpose. This philosophy of intentional design is exactly what modern web development often lacks.</p>
-
-                        <p>When we strip away the unnecessary animations, the gradient backgrounds, and the endless carousel components, we're left with something pure: content and functionality working in harmony.</p>
+                        <p>Features include five different layouts (Magazine, Timeline, Terminal Session, Wide Format, Minimal Clean), three types of interactive notes (sidenotes, popups, footnotes), comprehensive keyboard shortcuts, and theme support via CSS custom properties.</p>
 
                         <div class="tags">
-                            <span class="tag">web-design</span>
-                            <span class="tag">terminal</span>
-                            <span class="tag">css</span>
-                            <span class="tag">performance</span>
+                            <span class="tag">demo</span>
+                            <span class="tag">features</span>
+                            <span class="tag">wide-format</span>
                             <span class="tag">columns</span>
                         </div>
                     </div>
@@ -508,7 +293,7 @@
         <div class="container">
             <header class="header terminal-window">
                 <h1>~/blog/minimal</h1>
-                <div class="breadcrumb">user@blog:~/posts$ head -n 50 article.md</div>
+                <div class="breadcrumb">user@blog:~/posts$ head -n 30 feature_demo.md</div>
                 <nav>
                     <a href="../index.html" class="nav-btn">← Back to Main</a>
                 </nav>
@@ -517,76 +302,43 @@
             <div class="blog-layout">
                 <article class="post-container terminal-window">
                     <div class="post-content">
-                        <h1 class="post-title">Building Terminal-Style Websites</h1>
+                        <h1 class="post-title">Terminal Blog Features Demo</h1>
                         
                         <div class="post-meta">
-                            <span>Published: August 18, 2025</span>
-                            <span>Author: terminal_user</span>
-                            <span>Reading time: 8 minutes</span>
+                            <span>Published: August 30, 2025</span>
+                            <span>Author: demo_user</span>
+                            <span>Reading time: 3 minutes</span>
                         </div>
 
-                        <p>In an era of increasingly complex web frameworks and bloated JavaScript bundles, there's something refreshing about returning to the fundamentals. Terminal-style websites offer a unique blend of nostalgia, functionality, and aesthetic appeal that cuts through the noise of modern web design.</p>
+                        <p>This post demonstrates all the interactive features available in this terminal-style blog. Try switching between different layouts and exploring the various note types.</p>
 
-                        <h2 id="philosophy">The Philosophy Behind Terminal Design</h2>
+                        <h2 id="layout-switching">Layout Switching</h2>
+                        <p>Click the "layouts" button in the top-left corner or press Alt+L to switch between five different presentation styles.</p>
 
-                        <p>Terminal interfaces weren't designed to be pretty—they were designed to be functional. Every character, every color, every layout decision serves a purpose. This philosophy of intentional design is exactly what modern web development often lacks.</p>
+                        <h2 id="notes">Interactive Notes</h2>
+                        <p>Three types of notes are available: sidenotes for quick context, popups for detailed explanations, and footnotes for formal citations.</p>
 
-                        <p>When we strip away the unnecessary animations, the gradient backgrounds, and the endless carousel components, we're left with something pure: content and functionality working in harmony.</p>
-
-                        <h3>Why Monospace Fonts Matter</h3>
-
-                        <p>Monospace fonts like Courier New aren't just nostalgic—they're practical. Each character takes up the same amount of space, creating a natural grid that makes text scannable and layouts predictable.</p>
-
-                        <h2 id="implementation">Technical Implementation</h2>
-
-                        <p>Building a terminal-style website doesn't require complex frameworks or build tools. In fact, the opposite is true—the simpler your stack, the more authentic the result.</p>
-
-                        <pre><code>/* Terminal styling with CSS */
-.terminal-window {
-    background: var(--bg-secondary);
-    border: 2px solid var(--border);
-    border-radius: 5px;
-    font-family: 'Courier New', monospace;
+                        <pre><code>// Layout switching function
+function switchLayout(name) {
+    document.querySelectorAll('.layout')
+        .forEach(el => el.classList.remove('active'));
+    document.getElementById(`layout-${name}`)
+        .classList.add('active');
 }</code></pre>
 
-                        <p>This approach allows for easy theming while maintaining consistency across all components.</p>
+                        <h2 id="keyboard">Keyboard Shortcuts</h2>
+                        <p>Press Alt+H to see all available shortcuts. The terminal aesthetic makes keyboard navigation feel natural and intuitive.</p>
 
-                        <h2 id="design">Design Principles</h2>
+                        <blockquote>"Good design is invisible - it gets out of the way and lets content shine."</blockquote>
 
-                        <p>Creating an effective terminal-style design requires following certain principles that have made command-line interfaces successful for decades.</p>
-
-                        <h3 id="accessibility">Accessibility Considerations</h3>
-
-                        <p>Terminal interfaces are inherently accessible. They're keyboard-navigable, use high contrast colors, and present information in a logical, linear fashion.</p>
-
-                        <ul>
-                            <li>High contrast color schemes improve readability</li>
-                            <li>Keyboard shortcuts feel natural in a terminal context</li>
-                            <li>Monospace fonts are easier to read for many people</li>
-                            <li>Simple layouts work well with screen readers</li>
-                        </ul>
-
-                        <blockquote>
-                            "The best interface is the one that gets out of your way and lets you focus on what matters: the content."
-                        </blockquote>
-
-                        <h2 id="performance">Performance Benefits</h2>
-
-                        <p>Terminal-style websites are naturally performant. Without heavy images, complex animations, or JavaScript frameworks, they load quickly and run smoothly on any device.</p>
-
-                        <p>This isn't just about nostalgia—it's about creating websites that work for everyone, regardless of their internet connection or device capabilities.</p>
-
-                        <h2 id="future">The Future of Terminal Design</h2>
-
-                        <p>As web development continues to evolve, the principles behind terminal design remain relevant. Clarity, functionality, and user focus never go out of style.</p>
-
-                        <p>Terminal-style websites represent more than just an aesthetic choice—they're a statement about what we value in digital interfaces. In a world of infinite scroll and endless distractions, sometimes the most radical choice is simplicity.</p>
+                        <h2 id="themes">Theme Support</h2>
+                        <p>CSS custom properties enable easy theme switching while maintaining consistency across all components.</p>
 
                         <div class="tags">
-                            <span class="tag">web-design</span>
-                            <span class="tag">terminal</span>
-                            <span class="tag">minimalism</span>
-                            <span class="tag">css</span>
+                            <span class="tag">demo</span>
+                            <span class="tag">features</span>
+                            <span class="tag">minimal</span>
+                            <span class="tag">clean</span>
                         </div>
                     </div>
                 </article>

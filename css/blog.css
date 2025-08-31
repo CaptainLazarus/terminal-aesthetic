@@ -521,7 +521,7 @@
 }
 
 .layout-magazine .post-title::before {
-    content: ">>> ARTICLE <<<\n";
+    content: ">>> ARTICLE <<<";
     color: var(--accent);
     font-size: 0.4em;
     display: block;

@@ -228,7 +228,7 @@ function showPreview() {
     
     previewContent.innerHTML = `
         <div class="preview-title">${post.title}</div>
-        <div class="preview-meta">${post.date} ${post.year} • ${post.words} words • ${post.tags.join(', ')}</div>
+        <div class="preview-meta">${post.date} ${post.year} • ${post.tags.join(', ')}</div>
         <div class="preview-description">${post.description}</div>
     `;
     

@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terminal News</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
-    <button class="scheme-toggle" onclick="toggleSwitcher()" tabindex="1" accesskey="t" title="Toggle themes (Alt+T)">themes</button>
-    
+    <button class="scheme-toggle" onclick="toggleSwitcher()" tabindex="1" accesskey="t"
+        title="Toggle themes (Alt+T)">themes</button>
+
     <div class="scheme-switcher hidden" id="schemeSwitcher">
         <h3>Color Schemes</h3>
-        <button onclick="setScheme('matrix')" class="active" accesskey="1" title="Matrix Green (Alt+1)">Matrix Green</button>
+        <button onclick="setScheme('matrix')" class="active" accesskey="1" title="Matrix Green (Alt+1)">Matrix
+            Green</button>
         <button onclick="setScheme('amber')" accesskey="2" title="Amber Terminal (Alt+2)">Amber Terminal</button>
         <button onclick="setScheme('cyan')" accesskey="3" title="Cyan Blue (Alt+3)">Cyan Blue</button>
         <button onclick="setScheme('purple')" accesskey="4" title="Purple Haze (Alt+4)">Purple Haze</button>
@@ -90,15 +94,15 @@
                     <div class="terminal-content">
                         <div class="status-line" style="font-size: 0.85em;">
                             <div style="text-align: center; margin-bottom: 10px;">
-                                <span style="color: var(--accent); font-size: 1.3em;">••••••••••••••••••••••••••••••</span>
+                                <span
+                                    style="color: var(--accent); font-size: 1.3em;">••••••••••••••••••••••••••••••</span>
                             </div>
-                            This site explores web development through a terminal lens. 
-                            Each post focuses on practical techniques for building 
-                            fast, accessible, and maintainable websites.<br><br>
+                            This site is a small wiki for community sourced first hand experiences and analysis. It's for
+                            knowledge and experiments. Nothing more, nothing less.<br><br>
                             <div style="text-align: center; margin-top: 15px;">
-                                <span style="color: var(--accent); font-size: 1.1em;">→ No frameworks</span><br>
-                                <span style="color: var(--accent); font-size: 1.1em;">→ No build steps</span><br>
-                                <span style="color: var(--accent); font-size: 1.1em;">→ No nonsense</span>
+                                <span style="color: var(--accent); font-size: 1.1em;">→ Peace</span><br>
+                                <span style="color: var(--accent); font-size: 1.1em;">→ Love</span><br>
+                                <span style="color: var(--accent); font-size: 1.1em;">→ Nirvana</span>
                             </div>
                         </div>
                     </div>
@@ -109,11 +113,13 @@
                     <div class="terminal-content">
                         <div class="status-line">
                             <div style="text-align: center; margin-bottom: 10px;">
-                                <pre style="color: var(--accent); font-size: 1.4em; margin: 0; line-height: 1;">[████████████████████] 100%</pre>
+                                <pre
+                                    style="color: var(--accent); font-size: 1.4em; margin: 0; line-height: 1;">[████████████████████] 100%</pre>
                             </div>
                             <strong style="color: var(--text-primary);">Status:</strong> Online<br>
                             <strong style="color: var(--text-primary);">Built with:</strong> Commit Mono font<br>
-                            <strong style="color: var(--text-primary);">Theme:</strong> <span id="currentTheme">Matrix Green</span><br>
+                            <strong style="color: var(--text-primary);">Theme:</strong> <span id="currentTheme">Matrix
+                                Green</span><br>
                             <strong style="color: var(--text-primary);">Load time:</strong> ~instant
                         </div>
                     </div>
@@ -122,10 +128,12 @@
         </main>
 
         <footer class="footer">
-            <p>connection terminated. | <a href="#reconnect">reconnect</a> | <a href="#manual">man terminal_news</a> | <a href="blog.html">browse archives</a> | logout complete.</p>
+            <p>connection terminated. | <a href="#reconnect">reconnect</a> | <a href="#manual">man terminal_news</a> |
+                <a href="blog.html">browse archives</a> | logout complete.</p>
         </footer>
     </div>
 
     <script src="js/shared.js"></script>
 </body>
+
 </html>
